@@ -5,6 +5,7 @@ class Game {
     this.board = [[1],[2],[3],
                   [4],[5],[6],
                   [7],[8],[9]];
+    this.plays = 0;
   }
 
   changeTurn() {
@@ -20,6 +21,8 @@ class Game {
   checkGameWinner() {
     if (this.checkRows() || this.checkCols() || this.checkDiags()) {
       return true
+    } else {
+      return this.checkDraw();
     }
   }
 
@@ -48,13 +51,17 @@ class Game {
     }
   }
 
+  checkDraw() {
+    if (this.plays === 9) {
+      turnDisplay.innerText = "It's a draw!"
+    }
+  }
 
   giveWinToPlayer(play) {
 
   }
 
   resetGameBoard() {
-    turnDisplay.innerText = 'won!'
-    turnDisplay.insertAdjacentHTML('afterbegin', this.turn.tokenId)
+
   }
 }
