@@ -16,32 +16,43 @@ class Game {
     turnImage.attributes.src.nodeValue = this.turn.playerImage
   }
 
+
   checkGameWinner(path) {
-    //check rows
+    if (this.checkRows() || this.checkCols() || this.checkDiags()) {
+      return true
+    }
+  }
+
+  checkRows() {
     for (var i = 0; i < 9; i++) {
       if (this.board[i][0] === this.board[i+1][0] && this.board[i][0] === this.board[i+2][0]) {
-        console.log("WINNER")
+        return true
       }
       i += 2
     }
+  }
 
-    //check columns
+  checkCols() {
     for (var i = 0; i < 3; i++) {
       if (this.board[i][0] === this.board[i+3][0] && this.board[i][0] === this.board[i+6][0]) {
-        console.log("WINNER")
+        return true
       }
     }
-    
-    //check diags
-
-
   }
+
+  checkDiags() {
+    if ((this.board[0][0] === this.board[4][0] && this.board[0][0] === this.board[8][0]) ||
+       (this.board[2][0] === this.board[4][0] && this.board[2][0] === this.board[6][0])) {
+      return true
+    }
+  }
+
 
   giveWinToPlayer(play) {
 
   }
 
   resetGameBoard() {
-
+    
   }
 }

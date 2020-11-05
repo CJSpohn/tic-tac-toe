@@ -1,5 +1,6 @@
 var game = new Game(new Player(`player1`, `sponge`), new Player(`player2`, `starfish`));
 
+var turnDisplay = document.querySelector('.turn-display')
 var gameBoard = document.querySelector('.game-board');
 var turnImage = document.querySelector('.turn-image');
 var squareOne = document.querySelector('.one')
@@ -17,7 +18,9 @@ gameBoard.addEventListener('click', function(event) {
   if (event.target.classList.contains('square') && event.target.innerHTML === "") {
     event.target.insertAdjacentHTML('afterbegin', game.turn.tokenId);
     game.board[parseInt(event.target.dataset.id)].splice(0, 1, game.turn.token)
-    game.checkGameWinner();
+    if (game.checkGameWinner()) {
+      game.resetGameBoard();
+    };
     game.changeTurn();
   }
 })
