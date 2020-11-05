@@ -1,6 +1,10 @@
 var game = new Game(new Player(`player1`, `sponge`), new Player(`player2`, `starfish`));
 
 var turnDisplay = document.querySelector('.turn-display')
+var player1Wins = document.querySelector('.player-1-wins');
+var player2Wins = document.querySelector('.player-2-wins');
+
+
 var gameBoard = document.querySelector('.game-board');
 var turnImage = document.querySelector('.turn-image');
 var squareOne = document.querySelector('.one')
@@ -18,8 +22,7 @@ gameBoard.addEventListener('click', function(event) {
   if (event.target.classList.contains('square') && event.target.innerHTML === "") {
     playPiece(event);
     if (game.checkGameWinner()) {
-      turnDisplay.innerText = 'won!';
-      turnDisplay.insertAdjacentHTML('afterbegin', game.turn.tokenId)
+      establishWinner();
       game.resetGameBoard();
     };
     game.changeTurn();
@@ -27,8 +30,21 @@ gameBoard.addEventListener('click', function(event) {
 })
 
 function playPiece(event) {
+  var squareNumber = parseInt(event.target.dataset.id);
+  var playerImage = game.turn.token;
   game.plays++;
-  console.log(game.plays)
   event.target.insertAdjacentHTML('afterbegin', game.turn.tokenId);
-  game.board[parseInt(event.target.dataset.id)].splice(0, 1, game.turn.token)
+  game.board[squareNumber].splice(0, 1, playerImage)
+}
+
+function establishWinner() {
+  turnDisplay.innerText = 'won!';
+  turnDisplay.insertAdjacentHTML('afterbegin', game.turn.tokenId);
+  game.turn.wins++
+  updateWinDisplay()
+}
+
+function updateWinDisplay() {
+  player1Wins.innerText = `${game.players[0].wins} wins`
+  player2Wins.innerText = `${game.players[1].wins} wins`
 }

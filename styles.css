@@ -31,7 +31,8 @@ h1 {
   text-align: center;
 }
 
-.wins {
+.player-1-wins,
+.player-2-wins {
   margin: 0;
 }
 
