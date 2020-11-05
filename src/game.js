@@ -2,7 +2,9 @@ class Game {
   constructor(player1, player2) {
     this.players = [player1, player2];
     this.turn = this.players[0];
-    this.board = [[],[],[],[],[],[],[],[],[]]
+    this.board = [[1],[2],[3],
+                  [4],[5],[6],
+                  [7],[8],[9]]
   }
 
   changeTurn() {
@@ -15,7 +17,19 @@ class Game {
   }
 
   checkGameWinner(path) {
-    
+    //check rows
+    for (var i = 0; i < 9; i++) {
+      if (this.board[i][0] === this.board[i+1][0] && this.board[i][0] === this.board[i+2][0]) {
+        console.log("WINNER")
+      }
+      i += 2
+    }
+
+    //check columns
+
+    //check diags
+
+
   }
 
   giveWinToPlayer(play) {

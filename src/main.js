@@ -16,8 +16,8 @@ var squareNine = document.querySelector('.nine')
 gameBoard.addEventListener('click', function(event) {
   if (event.target.classList.contains('square') && event.target.innerHTML === "") {
     event.target.insertAdjacentHTML('afterbegin', game.turn.tokenId);
-    game.board[parseInt(event.target.dataset.id)].push(game.turn.token)
-    console.log(game.board)
+    game.board[parseInt(event.target.dataset.id)].splice(0, 1, game.turn.token)
+    game.checkGameWinner();
     game.changeTurn();
   }
 })
