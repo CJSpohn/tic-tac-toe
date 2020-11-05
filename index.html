@@ -10,26 +10,29 @@
 </head>
 <body>
   <aside class="player-1">
-    <img class="player-1-img" src="./assets/sponge.svg" alt="">
+    <img class="player-1-img" src="./assets/sponge.svg" alt="A little yellow sponge">
     <h1 class="wins">0 wins</h1>
   </aside>
   <section class="game-display">
-    <h1 class="turn-display">It's blanks turn</h1>
+    <h1 class="turn-display">It's <img class="turn-image" src="./assets/sponge.svg" alt="Player 1">s turn</h1>
     <section class="game-board">
-      <div class="square one">1</div>
-      <div class="square two">2</div>
-      <div class="square three">3</div>
-      <div class="square four">4</div>
-      <div class="square five">5</div>
-      <div class="square six">6</div>
-      <div class="square seven">7</div>
-      <div class="square eight">8</div>
-      <div class="square nine">9</div>
+      <div class="square one" data-id="0"></div>
+      <div class="square two" data-id="1"></div>
+      <div class="square three" data-id="2"></div>
+      <div class="square four" data-id="3"></div>
+      <div class="square five" data-id="4"></div>
+      <div class="square six" data-id="5"></div>
+      <div class="square seven" data-id="6"></div>
+      <div class="square eight" data-id="7"></div>
+      <div class="square nine" data-id="8"></div>
     </section>
   </section>
   <aside class="player-2">
-    <img class="player-2-img" src="assets/starfish.svg" alt="">
+    <img class="player-2-img" src="assets/starfish.svg" alt="A pink starfish">
     <h1 class="wins">0 wins</h1>
   </aside>
+  <script src="src/player.js"></script>
+  <script src="src/game.js"></script>
+  <script src="src/main.js"></script>
 </body>
 </html>

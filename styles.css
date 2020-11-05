@@ -20,6 +20,11 @@ h1 {
   margin-top: 5vh;
 }
 
+.turn-image {
+  margin: 0px;
+  /* margin-top: 10px; */
+}
+
 .player-1,
 .player-2 {
   width: 25vw;
@@ -46,7 +51,8 @@ img {
 
 .game-board {
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   grid-gap: 8px;
   background: linear-gradient(#233656, #70B9AC, #E87A4C, #B99496);
   margin: 10vh auto;
@@ -62,4 +68,8 @@ img {
   height: 100%;
   width: 100%;
   background-color: white;
+}
+
+.board-img {
+  margin: 0;
 }
