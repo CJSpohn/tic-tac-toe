@@ -16,11 +16,19 @@ var squareNine = document.querySelector('.nine')
 
 gameBoard.addEventListener('click', function(event) {
   if (event.target.classList.contains('square') && event.target.innerHTML === "") {
-    event.target.insertAdjacentHTML('afterbegin', game.turn.tokenId);
-    game.board[parseInt(event.target.dataset.id)].splice(0, 1, game.turn.token)
+    playPiece(event);
     if (game.checkGameWinner()) {
+      turnDisplay.innerText = 'won!';
+      turnDisplay.insertAdjacentHTML('afterbegin', game.turn.tokenId)
       game.resetGameBoard();
     };
     game.changeTurn();
   }
 })
+
+function playPiece(event) {
+  game.plays++;
+  console.log(game.plays)
+  event.target.insertAdjacentHTML('afterbegin', game.turn.tokenId);
+  game.board[parseInt(event.target.dataset.id)].splice(0, 1, game.turn.token)
+}
