@@ -52,6 +52,7 @@ img {
 .game-board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   grid-gap: 8px;
   background: linear-gradient(#233656, #70B9AC, #E87A4C, #B99496);
   margin: 10vh auto;
@@ -71,6 +72,4 @@ img {
 
 .board-img {
   margin: 0;
-  width: 80%;
-  height: 80%;
 }
