@@ -1,0 +1,65 @@
+html {
+  font-family: 'Chelsea Market', cursive;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow:hidden;
+  background: linear-gradient(#00d4ff, #0477C2, #090976, #020024);
+}
+
+body {
+  display: flex;
+}
+
+h1 {
+  font-size: 4vw;
+}
+
+.turn-display {
+  margin-top: 5vh;
+}
+
+.player-1,
+.player-2 {
+  width: 25vw;
+  text-align: center;
+}
+
+.wins {
+  margin: 0;
+}
+
+img {
+  width: 10vw;
+  margin-top: 5vw;
+}
+
+.game-display {
+  margin: -1vh 0 0 0;
+  padding: 0;
+  text-align: center;
+  width: 50vw;
+  background: white;
+  height: 100vh;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 8px;
+  background: linear-gradient(#233656, #70B9AC, #E87A4C, #B99496);
+  margin: 10vh auto;
+  width: 90%;
+  height: 50vh;
+  min-height: 400px;
+}
+
+.square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}
