@@ -2,6 +2,7 @@ class Game {
   constructor(player1, player2) {
     this.players = [player1, player2];
     this.turn = this.players[0];
+    this.board = [[],[],[],[],[],[],[],[],[]]
   }
 
   changeTurn() {
@@ -13,8 +14,8 @@ class Game {
     turnImage.attributes.src.nodeValue = this.turn.playerImage
   }
 
-  checkGameWinner(board) {
-
+  checkGameWinner(path) {
+    
   }
 
   giveWinToPlayer(play) {
