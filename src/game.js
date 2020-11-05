@@ -26,7 +26,12 @@ class Game {
     }
 
     //check columns
-
+    for (var i = 0; i < 3; i++) {
+      if (this.board[i][0] === this.board[i+3][0] && this.board[i][0] === this.board[i+6][0]) {
+        console.log("WINNER")
+      }
+    }
+    
     //check diags
 
 
