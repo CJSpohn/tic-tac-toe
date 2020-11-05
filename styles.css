@@ -12,6 +12,10 @@ body {
   display: flex;
 }
 
+h1 {
+  font-size: 4vw;
+}
+
 .turn-display {
   margin-top: 5vh;
 }
@@ -38,4 +42,24 @@ img {
   width: 50vw;
   background: white;
   height: 100vh;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 8px;
+  background: linear-gradient(#233656, #70B9AC, #E87A4C, #B99496);
+  margin: 10vh auto;
+  width: 90%;
+  height: 50vh;
+  min-height: 400px;
+}
+
+.square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background-color: white;
 }
