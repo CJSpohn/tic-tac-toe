@@ -1,5 +1,5 @@
 class Game {
-  constructor(player1, player2) {
+  constructor(player1, player2, turn) {
     this.players = [player1, player2];
     this.turn = this.players[0];
     this.board = [[1],[2],[3],
@@ -61,6 +61,8 @@ class Game {
 
   giveWinToPlayer() {
     this.turn.wins++
+    var winningPlayer = this.turn
+    winningPlayer.saveWinsToStorage(winningPlayer)
   }
 
   resetGameBoard() {
@@ -68,8 +70,8 @@ class Game {
   }
 
   resetGame() {
-    var player1 = new Player(game.players[0], game.players[0].token, game.players[0].wins)
-    var player2 = new Player(game.players[1], game.players[1].token, game.players[1].wins)
+    var player1 = new Player(game.players[0].id, game.players[0].token, game.players[0].wins)
+    var player2 = new Player(game.players[1].id, game.players[1].token, game.players[1].wins)
     game = new Game(player1, player2)
     game.clearBoard();
   }

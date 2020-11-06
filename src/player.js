@@ -7,8 +7,10 @@ class Player {
     this.wins = wins || 0;
   }
 
-  saveWinsToStorage() {
-
+  saveWinsToStorage(player) {
+    var savedWins = JSON.parse(localStorage.getItem(player.id)) || 0;
+    savedWins = player.wins;
+    localStorage.setItem(player.id, savedWins);
   }
 
   retrieveWinsFromStorage() {
