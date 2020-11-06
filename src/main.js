@@ -34,12 +34,13 @@ gameBoard.addEventListener('click', function(event) {
 function playPiece(event) {
   var squareNumber = parseInt(event.target.dataset.id);
   var playerImage = game.turn.token;
-  game.plays++;
+  game.drawCount++;
   event.target.insertAdjacentHTML('afterbegin', game.turn.tokenId);
   game.board[squareNumber].splice(0, 1, playerImage)
 }
 
 function establishWinner() {
+  game.plays++
   turnDisplay.innerText = 'won!';
   turnDisplay.insertAdjacentHTML('afterbegin', game.turn.tokenId);
   game.giveWinToPlayer();
