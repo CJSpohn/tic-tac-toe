@@ -22,6 +22,7 @@ h1 {
 
 .turn-image {
   margin: 0px;
+  width: 50px;
   /* margin-top: 10px; */
 }
 
@@ -42,12 +43,12 @@ img {
 }
 
 .game-display {
-  margin: -1vh 0 0 0;
+  margin: -2vh 0 0 0;
   padding: 0;
   text-align: center;
   width: 50vw;
   background: white;
-  height: 100vh;
+  height: 102vh;
 }
 
 .game-board {
@@ -73,4 +74,5 @@ img {
 
 .board-img {
   margin: 0;
+  width: 100px;
 }

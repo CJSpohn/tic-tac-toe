@@ -40,11 +40,12 @@ function playPiece(event) {
 function establishWinner() {
   turnDisplay.innerText = 'won!';
   turnDisplay.insertAdjacentHTML('afterbegin', game.turn.tokenId);
-  game.turn.wins++
+  game.giveWinToPlayer();
   updateWinDisplay()
 }
 
 function updateWinDisplay() {
   player1Wins.innerText = `${game.players[0].wins} wins`
   player2Wins.innerText = `${game.players[1].wins} wins`
+  game.resetGameBoard();
 }

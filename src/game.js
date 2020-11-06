@@ -17,7 +17,6 @@ class Game {
     turnImage.attributes.src.nodeValue = this.turn.playerImage
   }
 
-
   checkGameWinner() {
     if (this.checkRows() || this.checkCols() || this.checkDiags()) {
       return true
@@ -57,11 +56,27 @@ class Game {
     }
   }
 
-  giveWinToPlayer(play) {
-
+  giveWinToPlayer() {
+    this.turn.wins++
   }
 
   resetGameBoard() {
+    setTimeout(this.resetGame, 2000)
+  }
 
+  resetGame() {
+    var player1 = new Player(game.players[0], game.players[0].token, game.players[0].wins)
+    var player2 = new Player(game.players[1], game.players[1].token, game.players[1].wins)
+    game = new Game(player1, player2)
+    game.clearBoard();
+  }
+
+  clearBoard() {
+    console.log("test")
+    var boardSpaces = document.querySelectorAll('.square');
+    for (var i = 0; i < boardSpaces.length; i++) {
+      boardSpaces[i].innerHTML = ""
+    }
+    turnDisplay.innerHTML = `It's <img class="turn-image" src="./assets/${game.turn.token}.svg" alt="Player 1">'s turn`
   }
 }
