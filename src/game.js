@@ -6,6 +6,7 @@ class Game {
                   [4],[5],[6],
                   [7],[8],[9]];
     this.plays = 0;
+    this.playable = true;
   }
 
   changeTurn() {
@@ -19,6 +20,7 @@ class Game {
 
   checkGameWinner() {
     if (this.checkRows() || this.checkCols() || this.checkDiags()) {
+      this.playable = !this.playable;
       return true
     } else {
       return this.checkDraw();
@@ -53,6 +55,7 @@ class Game {
   checkDraw() {
     if (this.plays === 9) {
       turnDisplay.innerText = "It's a draw!"
+      this.resetGameBoard()
     }
   }
 
@@ -72,7 +75,6 @@ class Game {
   }
 
   clearBoard() {
-    console.log("test")
     var boardSpaces = document.querySelectorAll('.square');
     for (var i = 0; i < boardSpaces.length; i++) {
       boardSpaces[i].innerHTML = ""

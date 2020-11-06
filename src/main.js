@@ -19,7 +19,7 @@ var squareNine = document.querySelector('.nine')
 
 
 gameBoard.addEventListener('click', function(event) {
-  if (event.target.classList.contains('square') && event.target.innerHTML === "") {
+  if (event.target.classList.contains('square') && event.target.innerHTML === "" && game.playable) {
     playPiece(event);
     if (game.checkGameWinner()) {
       establishWinner();
