@@ -1,4 +1,5 @@
-var game = new Game(new Player(`player1`, `sponge`), new Player(`player2`, `starfish`));
+var game = new Game(new Player(`player1`, `sponge`, JSON.parse(localStorage.getItem('player1'))),
+           new Player(`player2`, `starfish`, JSON.parse(localStorage.getItem('player2'))));
 
 var turnDisplay = document.querySelector('.turn-display')
 var player1Wins = document.querySelector('.player-1-wins');
@@ -17,6 +18,7 @@ var squareSeven = document.querySelector('.seven')
 var squareEight = document.querySelector('.eight')
 var squareNine = document.querySelector('.nine')
 
+window.onload = updateWinDisplay();
 
 gameBoard.addEventListener('click', function(event) {
   if (event.target.classList.contains('square') && event.target.innerHTML === "" && game.playable) {
@@ -42,10 +44,10 @@ function establishWinner() {
   turnDisplay.insertAdjacentHTML('afterbegin', game.turn.tokenId);
   game.giveWinToPlayer();
   updateWinDisplay()
+  game.resetGameBoard();
 }
 
 function updateWinDisplay() {
   player1Wins.innerText = `${game.players[0].wins} wins`
   player2Wins.innerText = `${game.players[1].wins} wins`
-  game.resetGameBoard();
 }
