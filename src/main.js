@@ -1,13 +1,11 @@
 var game = new Game(new Player(`player1`, `sponge`, JSON.parse(localStorage.getItem('player1'))),
            new Player(`player2`, `starfish`, JSON.parse(localStorage.getItem('player2'))));
 
-var turnDisplay = document.querySelector('.turn-display')
 var player1Wins = document.querySelector('.player-1-wins');
 var player2Wins = document.querySelector('.player-2-wins');
 
 
 var gameBoard = document.querySelector('.game-board');
-var turnImage = document.querySelector('.turn-image');
 var squareOne = document.querySelector('.one')
 var squareTwo = document.querySelector('.two')
 var squareThree = document.querySelector('.three')
@@ -17,6 +15,9 @@ var squareSix = document.querySelector('.six')
 var squareSeven = document.querySelector('.seven')
 var squareEight = document.querySelector('.eight')
 var squareNine = document.querySelector('.nine')
+var turnImage = document.querySelector('.turn-image');
+var winnerDisplay = document.querySelector('.winner-display');
+var turnDisplay = document.querySelector('.turn-display')
 
 window.onload = updateWinDisplay();
 
@@ -41,14 +42,20 @@ function playPiece(event) {
 
 function establishWinner() {
   game.plays++
-  turnDisplay.innerText = 'won!';
-  turnDisplay.insertAdjacentHTML('afterbegin', game.turn.tokenId);
+  displayWinner();
   game.giveWinToPlayer();
   updateWinDisplay()
   game.resetGameBoard();
 }
 
+function displayWinner() {
+  winnerDisplay.classList.remove('hidden')
+  turnDisplay.classList.add('hidden')
+  winnerDisplay.innerText = 'won!';
+  winnerDisplay.insertAdjacentHTML('afterbegin', game.turn.tokenId);
+}
+
 function updateWinDisplay() {
-  player1Wins.innerText = `${game.players[0].wins} wins`
-  player2Wins.innerText = `${game.players[1].wins} wins`
+  player1Wins.innerText = `wins: ${game.players[0].wins}`
+  player2Wins.innerText = `wins: ${game.players[1].wins}`
 }

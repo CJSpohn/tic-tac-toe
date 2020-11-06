@@ -61,6 +61,7 @@ class Game {
 
   checkDraw() {
     if (this.drawCount === 9) {
+      game.plays++
       turnDisplay.innerText = "It's a draw!"
       this.resetGameBoard()
     }
@@ -79,9 +80,10 @@ class Game {
   }
 
   resetGame(first) {
+    winnerDisplay.classList.add('hidden')
+    turnDisplay.classList.remove('hidden')
     var player1 = new Player(game.players[0].id, game.players[0].token, game.players[0].wins)
     var player2 = new Player(game.players[1].id, game.players[1].token, game.players[1].wins)
-    console.log(game.plays)
     game = new Game(player1, player2, game.plays)
     game.clearBoard();
   }
@@ -91,6 +93,5 @@ class Game {
     for (var i = 0; i < boardSpaces.length; i++) {
       boardSpaces[i].innerHTML = ""
     }
-    turnDisplay.innerHTML = `It's <img class="turn-image" src="./assets/${game.turn.token}.svg" alt="Player 1">'s turn`
   }
 }
