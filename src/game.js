@@ -22,15 +22,14 @@ class Game {
     } else {
       this.turn = this.players[0]
     }
-    turnImage.attributes.src.nodeValue = this.turn.playerImage
   }
 
   checkGameWinner() {
     if (this.checkRows() || this.checkCols() || this.checkDiags()) {
+      console.log('before', this.playable)
       this.playable = !this.playable;
+      console.log('after', this.playable)
       return true
-    } else {
-      return this.checkDraw();
     }
   }
 
@@ -62,8 +61,8 @@ class Game {
   checkDraw() {
     if (this.drawCount === 9) {
       game.plays++
-      turnDisplay.innerText = "It's a draw!"
-      this.resetGameBoard()
+      this.playable = !this.playable;
+      return true
     }
   }
 
@@ -73,15 +72,7 @@ class Game {
     winningPlayer.saveWinsToStorage(winningPlayer)
   }
 
-  resetGameBoard() {
-    setTimeout(function() {
-      game.resetGame(game.first)
-    }, 2000)
-  }
-
   resetGame(first) {
-    winnerDisplay.classList.add('hidden')
-    turnDisplay.classList.remove('hidden')
     var player1 = new Player(game.players[0].id, game.players[0].token, game.players[0].wins)
     var player2 = new Player(game.players[1].id, game.players[1].token, game.players[1].wins)
     game = new Game(player1, player2, game.plays)
