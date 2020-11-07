@@ -1,12 +1,19 @@
 class Game {
-  constructor(player1, player2, turn) {
+  constructor(player1, player2, plays) {
     this.players = [player1, player2];
-    this.turn = this.players[0];
     this.board = [[1],[2],[3],
                   [4],[5],[6],
                   [7],[8],[9]];
-    this.plays = 0;
+    this.plays = plays || 0;
     this.playable = true;
+
+    if (this.plays % 2 === 0) {
+      this.turn = this.players[0]
+    } else {
+      this.turn = this.players[1]
+    }
+
+    this.drawCount = 0
   }
 
   changeTurn() {
@@ -53,7 +60,8 @@ class Game {
   }
 
   checkDraw() {
-    if (this.plays === 9) {
+    if (this.drawCount === 9) {
+      game.plays++
       turnDisplay.innerText = "It's a draw!"
       this.resetGameBoard()
     }
@@ -66,13 +74,17 @@ class Game {
   }
 
   resetGameBoard() {
-    setTimeout(this.resetGame, 2000)
+    setTimeout(function() {
+      game.resetGame(game.first)
+    }, 2000)
   }
 
-  resetGame() {
+  resetGame(first) {
+    winnerDisplay.classList.add('hidden')
+    turnDisplay.classList.remove('hidden')
     var player1 = new Player(game.players[0].id, game.players[0].token, game.players[0].wins)
     var player2 = new Player(game.players[1].id, game.players[1].token, game.players[1].wins)
-    game = new Game(player1, player2)
+    game = new Game(player1, player2, game.plays)
     game.clearBoard();
   }
 
@@ -81,6 +93,5 @@ class Game {
     for (var i = 0; i < boardSpaces.length; i++) {
       boardSpaces[i].innerHTML = ""
     }
-    turnDisplay.innerHTML = `It's <img class="turn-image" src="./assets/${game.turn.token}.svg" alt="Player 1">'s turn`
   }
 }
