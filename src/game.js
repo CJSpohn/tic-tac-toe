@@ -6,13 +6,13 @@ class Game {
                   [7],[8],[9]];
     this.plays = plays || 0;
     this.playable = true;
-
+    console.log("plays", this.plays)
     if (this.plays % 2 === 0) {
       this.turn = this.players[0]
     } else {
       this.turn = this.players[1]
     }
-
+    console.log("turn", this.turn)
     this.drawCount = 0
   }
 
@@ -26,9 +26,7 @@ class Game {
 
   checkGameWinner() {
     if (this.checkRows() || this.checkCols() || this.checkDiags()) {
-      console.log('before', this.playable)
       this.playable = !this.playable;
-      console.log('after', this.playable)
       return true
     }
   }
@@ -72,7 +70,7 @@ class Game {
     winningPlayer.saveWinsToStorage(winningPlayer)
   }
 
-  resetGame(first) {
+  resetGameData(first) {
     var player1 = new Player(game.players[0].id, game.players[0].token, game.players[0].wins)
     var player2 = new Player(game.players[1].id, game.players[1].token, game.players[1].wins)
     game = new Game(player1, player2, game.plays)

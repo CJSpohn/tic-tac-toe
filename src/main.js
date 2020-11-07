@@ -1,9 +1,6 @@
 var game = new Game(new Player(`player1`, `sponge`, JSON.parse(localStorage.getItem('player1'))),
            new Player(`player2`, `starfish`, JSON.parse(localStorage.getItem('player2'))));
 
-var player1Wins = document.querySelector('.player-1-wins');
-var player2Wins = document.querySelector('.player-2-wins');
-
 
 var squareOne = document.querySelector('.one')
 var squareTwo = document.querySelector('.two')
@@ -15,6 +12,8 @@ var squareSeven = document.querySelector('.seven')
 var squareEight = document.querySelector('.eight')
 var squareNine = document.querySelector('.nine')
 
+var player1Wins = document.querySelector('.player-1-wins');
+var player2Wins = document.querySelector('.player-2-wins');
 window.onload = updateWinDisplay();
 var gameBoard = document.querySelector('.game-board');
 var turnImage = document.querySelector('.turn-image');
@@ -29,7 +28,7 @@ if (event.target.classList.contains('square') && event.target.innerHTML === "" &
     playToken(event);
     checkGameResults()
     game.changeTurn();
-    turnImage.attributes.src.nodeValue = game.turn.playerImage
+    toggleToken()
   }
 }
 
@@ -45,12 +44,16 @@ function checkGameResults() {
   }
 }
 
-function playToken(event) {
-  game.drawCount++;
-  toggleTokenDisplay(event)
+function toggleToken() {
+  turnImage.attributes.src.nodeValue = game.turn.playerImage
 }
 
-function toggleTokenDisplay(event) {
+function playToken(event) {
+  game.drawCount++;
+  insertToken(event)
+}
+
+function insertToken(event) {
   var squareNumber = parseInt(event.target.dataset.id);
   var playerImage = game.turn.token;
   event.target.insertAdjacentHTML('afterbegin', game.turn.tokenId);
@@ -62,7 +65,6 @@ function establishWinner() {
   displayWinner();
   game.giveWinToPlayer();
   updateWinDisplay()
-  resetGameBoard();
 }
 
 function displayWinner() {
@@ -81,6 +83,6 @@ function resetGameBoard() {
   setTimeout(function() {
     winnerDisplay.classList.add('hidden')
     turnDisplay.classList.remove('hidden')
-    game.resetGame(game.first)
+    game.resetGameData(game.first)
   }, 2000)
 }
