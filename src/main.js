@@ -84,5 +84,6 @@ function resetGameBoard() {
     winnerDisplay.classList.add('hidden')
     turnDisplay.classList.remove('hidden')
     game.resetGameData(game.first)
+    toggleToken();
   }, 2000)
 }
