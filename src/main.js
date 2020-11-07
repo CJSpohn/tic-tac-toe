@@ -46,9 +46,13 @@ function checkGameResults() {
 }
 
 function playPiece(event) {
+  game.drawCount++;
+  togglePiece(event)
+}
+
+function togglePiece(event) {
   var squareNumber = parseInt(event.target.dataset.id);
   var playerImage = game.turn.token;
-  game.drawCount++;
   event.target.insertAdjacentHTML('afterbegin', game.turn.tokenId);
   game.board[squareNumber].splice(0, 1, playerImage)
 }
