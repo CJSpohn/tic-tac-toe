@@ -26,7 +26,7 @@ gameBoard.addEventListener('click', function(event) {
 
 function takeTurn(event) {
 if (event.target.classList.contains('square') && event.target.innerHTML === "" && game.playable) {
-    playPiece(event);
+    playToken(event);
     checkGameResults()
     game.changeTurn();
     turnImage.attributes.src.nodeValue = game.turn.playerImage
@@ -45,12 +45,12 @@ function checkGameResults() {
   }
 }
 
-function playPiece(event) {
+function playToken(event) {
   game.drawCount++;
-  togglePiece(event)
+  toggleTokenDisplay(event)
 }
 
-function togglePiece(event) {
+function toggleTokenDisplay(event) {
   var squareNumber = parseInt(event.target.dataset.id);
   var playerImage = game.turn.token;
   event.target.insertAdjacentHTML('afterbegin', game.turn.tokenId);
