@@ -12,5 +12,5 @@ class Player {
     savedWins = player.wins;
     localStorage.setItem(player.id, savedWins);
   }
-  
+
 }
