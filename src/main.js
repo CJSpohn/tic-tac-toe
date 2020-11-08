@@ -9,6 +9,7 @@ var turnImage = document.querySelector('.turn-image');
 var winnerDisplay = document.querySelector('.winner-display');
 var turnDisplay = document.querySelector('.turn-display')
 var allSquares = document.querySelectorAll('.square')
+
 gameBoard.addEventListener('click', function(event) {
   takeTurn(event)
 })
