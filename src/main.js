@@ -1,7 +1,6 @@
 var game = new Game(new Player(`player1`, `sponge`, JSON.parse(localStorage.getItem('player1'))),
            new Player(`player2`, `starfish`, JSON.parse(localStorage.getItem('player2'))));
 
-
 var squareOne = document.querySelector('.one')
 var squareTwo = document.querySelector('.two')
 var squareThree = document.querySelector('.three')
@@ -24,6 +23,7 @@ gameBoard.addEventListener('click', function(event) {
 })
 
 function takeTurn(event) {
+  console.log(event.target)
 if (event.target.classList.contains('square') && event.target.innerHTML === "" && game.playable) {
     playToken(event);
     checkGameResults()

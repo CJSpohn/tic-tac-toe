@@ -6,13 +6,11 @@ class Game {
                   [7],[8],[9]];
     this.plays = plays || 0;
     this.playable = true;
-    console.log("plays", this.plays)
     if (this.plays % 2 === 0) {
       this.turn = this.players[0]
     } else {
       this.turn = this.players[1]
     }
-    console.log("turn", this.turn)
     this.drawCount = 0
   }
 

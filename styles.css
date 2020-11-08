@@ -4,7 +4,7 @@ html {
   padding: 0;
   height: 100%;
   width: 100%;
-  overflow:hidden;
+  overflow: hidden;
   background: linear-gradient(#00d4ff, #0477C2, #090976, #020024);
 }
 
@@ -22,8 +22,7 @@ h1 {
 
 .turn-image {
   margin: 0px;
-  width: 50px;
-  /* margin-top: 10px; */
+  width: 10vw;
 }
 
 .player-1,
@@ -37,7 +36,7 @@ h1 {
   margin: 0;
 }
 
-img {
+.player-img {
   width: 10vw;
   margin-top: 5vw;
 }
