@@ -18,6 +18,8 @@ h1 {
 }
 
 .turn-image {
+  position: relative;
+  top: 10px;
   margin: 0px;
   height: 9vh;
   width: 8vw;
@@ -35,8 +37,13 @@ h1 {
 }
 
 .player-img {
+  position: relative;
   width: 10vw;
   margin-top: 5vw;
+}
+
+.starfish{
+  left: 20px;
 }
 
 /* Center Game Display */
