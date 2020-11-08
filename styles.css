@@ -17,13 +17,10 @@ h1 {
   font-size: 4vw;
 }
 
-.turn-display {
-  margin-top: 5vh;
-}
-
 .turn-image {
   margin: 0px;
-  width: 10vw;
+  height: 8vh;
+  width: 8vw;
 }
 
 .player-1,
@@ -43,13 +40,17 @@ h1 {
 }
 
 /* Center Game Display */
+.turn-display {
+  margin-top: 7vh;
+}
+
 .game-display {
   margin: -2vh 0 0 0;
   padding: 0;
   text-align: center;
   width: 50vw;
   background: white;
-  height: 102vh;
+  height: 105vh;
 }
 
 .game-board {
