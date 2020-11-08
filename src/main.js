@@ -1,16 +1,6 @@
 var game = new Game(new Player(`player1`, `sponge`, JSON.parse(localStorage.getItem('player1'))),
            new Player(`player2`, `starfish`, JSON.parse(localStorage.getItem('player2'))));
 
-var squareOne = document.querySelector('.one')
-var squareTwo = document.querySelector('.two')
-var squareThree = document.querySelector('.three')
-var squareFour = document.querySelector('.four')
-var squareFive = document.querySelector('.five')
-var squareSix = document.querySelector('.six')
-var squareSeven = document.querySelector('.seven')
-var squareEight = document.querySelector('.eight')
-var squareNine = document.querySelector('.nine')
-
 var player1Wins = document.querySelector('.player-1-wins');
 var player2Wins = document.querySelector('.player-2-wins');
 window.onload = updateWinDisplay();
