@@ -1,7 +1,6 @@
 var game = new Game(new Player(`player1`, `sponge`, JSON.parse(localStorage.getItem('player1'))),
            new Player(`player2`, `starfish`, JSON.parse(localStorage.getItem('player2'))));
 
-
 var squareOne = document.querySelector('.one')
 var squareTwo = document.querySelector('.two')
 var squareThree = document.querySelector('.three')
@@ -19,17 +18,18 @@ var gameBoard = document.querySelector('.game-board');
 var turnImage = document.querySelector('.turn-image');
 var winnerDisplay = document.querySelector('.winner-display');
 var turnDisplay = document.querySelector('.turn-display')
+var allSquares = document.querySelectorAll('.square')
 gameBoard.addEventListener('click', function(event) {
   takeTurn(event)
 })
 
 function takeTurn(event) {
-if (event.target.classList.contains('square') && event.target.innerHTML === "" && game.playable) {
-    playToken(event);
-    checkGameResults()
-    game.changeTurn();
-    toggleToken()
-  }
+  if (event.target.classList.contains('square') && event.target.innerHTML === "" && game.playable) {
+      playToken(event);
+      checkGameResults()
+      game.changeTurn();
+      toggleToken()
+    }
 }
 
 function checkGameResults() {
@@ -86,4 +86,14 @@ function resetGameBoard() {
     game.resetGameData(game.first)
     toggleToken();
   }, 2000)
+}
+
+function animateWinner(square1, square2, square3) {
+  for (var i = 0; i < allSquares.length; i++) {
+    if (allSquares[i].dataset.id === square1.toString() ||
+        allSquares[i].dataset.id === square2.toString() ||
+        allSquares[i].dataset.id === square3.toString()) {
+      allSquares[i].firstElementChild.classList.add('shake')
+    }
+  }
 }
