@@ -79,13 +79,14 @@ h1 {
 }
 
 .square:focus {
-  outline: none;  
+  outline: none;
 }
 
 .board-img {
   position: relative;
   margin: 0;
-  width: 100px;
+  width: 65%;
+  height: 80%
 }
 
 .hidden {
@@ -93,8 +94,15 @@ h1 {
 }
 
 /* To counter svg starfish image being off center */
-.starfish{
-  left: 15px;
+.starfish {
+  top: 5px;
+  left: 20px;
+}
+
+.winner {
+  top: 20px;
+  width: 125px;
+  height: 100px;
 }
 
 /* Winner Animations */
