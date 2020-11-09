@@ -26,15 +26,15 @@ h1 {
   margin: 0;
 }
 
-.player-img {
+.player-image,
+.turn-image {
   position: relative;
   width: 10vw;
   margin-top: 5vw;
 }
 
 /* --------Center Game Display-------- */
-.turn-display,
-.winner-display,
+.header-display,
 .draw-display {
   font-size: 4vw;
   display: flex;
@@ -49,9 +49,7 @@ h1 {
 
 .turn-image,
 .winner-image {
-  position: relative;
   margin: 0px;
-  width: 10vw;
 }
 
 .game-display {
@@ -103,12 +101,6 @@ h1 {
 .starfish {
   top: 5px;
   left: 20px;
-}
-
-.winner {
-  top: 20px;
-  width: 125px;
-  height: 100px;
 }
 
 /* --------Winner Animations-------- */
