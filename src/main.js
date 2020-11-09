@@ -36,6 +36,7 @@ function checkGameResults() {
 }
 
 function toggleToken() {
+  
   turnImage.attributes.src.nodeValue = game.turn.playerImage
 }
 
@@ -81,10 +82,12 @@ function resetGameBoard() {
 
 function animateWinner(square1, square2, square3) {
   for (var i = 0; i < allSquares.length; i++) {
-    if (allSquares[i].dataset.id === square1.toString() ||
-        allSquares[i].dataset.id === square2.toString() ||
-        allSquares[i].dataset.id === square3.toString()) {
-      allSquares[i].firstElementChild.classList.add('shake')
+    var id = parseInt(allSquares[i].dataset.id);
+    var shouldAnimateWinner = id === square1
+      || id === square2
+      || id === square3;
+    if (shouldAnimateWinner) {
+      allSquares[i].firstElementChild.classList.add('shake');
     }
   }
 }

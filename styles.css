@@ -21,8 +21,8 @@ h1 {
   position: relative;
   top: 10px;
   margin: 0px;
-  height: 9vh;
-  width: 8vw;
+  height: 75px;
+  width: 100px;
 }
 
 .player-1,
@@ -40,10 +40,6 @@ h1 {
   position: relative;
   width: 10vw;
   margin-top: 5vw;
-}
-
-.starfish{
-  left: 20px;
 }
 
 /* Center Game Display */
@@ -79,15 +75,26 @@ h1 {
   height: 100%;
   width: 100%;
   background-color: white;
+  border: none;
+}
+
+.square:focus {
+  outline: none;  
 }
 
 .board-img {
+  position: relative;
   margin: 0;
   width: 100px;
 }
 
 .hidden {
   display: none;
+}
+
+/* To counter svg starfish image being off center */
+.starfish{
+  left: 15px;
 }
 
 /* Winner Animations */
