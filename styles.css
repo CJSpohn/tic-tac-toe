@@ -2,8 +2,6 @@ html {
   font-family: 'Chelsea Market', cursive;
   margin: 0;
   padding: 0;
-  height: 100%;
-  width: 100%;
   overflow: hidden;
   background: linear-gradient(#00d4ff, #0477C2, #090976, #020024);
 }
@@ -17,13 +15,12 @@ h1 {
   font-size: 4vw;
 }
 
-.turn-display {
-  margin-top: 5vh;
-}
-
 .turn-image {
+  position: relative;
+  top: 10px;
   margin: 0px;
-  width: 10vw;
+  height: 75px;
+  width: 100px;
 }
 
 .player-1,
@@ -38,18 +35,23 @@ h1 {
 }
 
 .player-img {
+  position: relative;
   width: 10vw;
   margin-top: 5vw;
 }
 
 /* Center Game Display */
+.turn-display {
+  margin-top: 7vh;
+}
+
 .game-display {
   margin: -2vh 0 0 0;
   padding: 0;
   text-align: center;
   width: 50vw;
   background: white;
-  height: 102vh;
+  height: 105vh;
 }
 
 .game-board {
@@ -71,30 +73,49 @@ h1 {
   height: 100%;
   width: 100%;
   background-color: white;
+  border: none;
+}
+
+.square:focus {
+  outline: none;
 }
 
 .board-img {
+  position: relative;
   margin: 0;
-  width: 100px;
+  width: 65%;
+  height: 80%
 }
 
 .hidden {
   display: none;
 }
 
+/* The starfish svg was off center so these classes were added to adjust the board display and winner display */
+.starfish {
+  top: 5px;
+  left: 20px;
+}
+
+.winner {
+  top: 20px;
+  width: 125px;
+  height: 100px;
+}
+
 /* Winner Animations */
 @keyframes shake {
   0% { transform: translate(5px, 5px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
+  10% { transform: translate(-5px, -10px) rotate(-20deg); }
+  20% { transform: translate(-15px, 0px) rotate(20deg); }
+  30% { transform: translate(15px, 10px) rotate(0deg); }
+  40% { transform: translate(5px, -5px) rotate(20deg); }
+  50% { transform: translate(-5px, 10px) rotate(-20deg); }
+  60% { transform: translate(-15px, 5px) rotate(0deg); }
+  70% { transform: translate(15px, 5px) rotate(-20deg); }
+  80% { transform: translate(-5px, -5px) rotate(20deg); }
+  90% { transform: translate(5px, 10px) rotate(0deg); }
+  100% { transform: translate(5px, -10px) rotate(-20deg); }
 }
 
 .shake {
