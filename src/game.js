@@ -83,6 +83,7 @@ class Game {
     var boardSpaces = document.querySelectorAll('.square');
     for (var i = 0; i < boardSpaces.length; i++) {
       boardSpaces[i].innerHTML = ""
+      boardSpaces[i].disabled = false;
     }
   }
 }

@@ -16,8 +16,7 @@ gameBoard.addEventListener('click', function(event) {
 })
 
 function takeTurn(event) {
-  var spaceIsOpen = event.target.innerHTML === ""
-  if (event.target.classList.contains('square') && spaceIsOpen && game.playable) {
+  if (event.target.classList.contains('square') && game.playable) {
     playToken(event);
     checkGameResults();
     game.changeTurn();
@@ -67,7 +66,6 @@ function insertToken(event) {
 
 function disableSpace(event) {
   event.target.disabled = true
-  console.log(event.target)
 }
 
 function establishWinner() {
