@@ -107,7 +107,7 @@ h1 {
 }
 
 /* --------Winner Animations-------- */
-@keyframes shake {
+@keyframes dance {
   10% {
     transform: translate(0, -20px);
   }
@@ -140,9 +140,6 @@ h1 {
   }
 }
 
-.shake {
-  animation: shake 2s;
-  @-webkit-keyframes: shake 2s;
-  @-moz-keyframes: shake 2s;
-  @-o-keyframes: shake 2s;
+.dance {
+  animation: dance 2s;
 }
