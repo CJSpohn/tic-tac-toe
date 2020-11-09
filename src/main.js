@@ -1,25 +1,25 @@
 var game = new Game(new Player(`player1`, `sponge`, JSON.parse(localStorage.getItem('player1'))),
                     new Player(`player2`, `starfish`, JSON.parse(localStorage.getItem('player2'))));
 
-var player1Wins = document.querySelector('.player-1-wins');
-var player2Wins = document.querySelector('.player-2-wins');
+var player1Wins = document.querySelector('.js-p1-wins');
+var player2Wins = document.querySelector('.js-p2-wins');
 
 window.onload = updateWinDisplay();
-var gameBoard = document.querySelector('.game-board');
-var turnImage = document.querySelector('.turn-image');
-var winnerImage = document.querySelector('.winner-image')
-var winnerDisplay = document.querySelector('.winner-display');
-var turnDisplay = document.querySelector('.turn-display');
-var endGameDisplay = document.querySelector('.end-game-display')
-var drawDisplay = document.querySelector('.draw-display')
-var allSquares = document.querySelectorAll('.square');
+var gameBoard = document.querySelector('.js-board');
+var turnImage = document.querySelector('.js-turn-image');
+var winnerImage = document.querySelector('.js-winner-image')
+var winnerDisplay = document.querySelector('.js-winner');
+var turnDisplay = document.querySelector('.js-turn-display');
+var endGameDisplay = document.querySelector('.js-end-game')
+var drawDisplay = document.querySelector('.js-draw')
+var allSquares = document.querySelectorAll('.js-space');
 
 gameBoard.addEventListener('click', function(event) {
   takeTurn(event);
 })
 
 function takeTurn(event) {
-  if (event.target.classList.contains('square') && game.playable) {
+  if (event.target.classList.contains('js-space') && game.playable) {
     playToken(event);
     checkGameResults();
     game.changeTurn();
