@@ -15,9 +15,10 @@ h1 {
   font-size: 4vw;
 }
 
-.turn-image {
+.turn-image,
+.winner-image {
   position: relative;
-  top: 10px;
+  /* top: 10px; */
   margin: 0px;
   height: 75px;
   width: 100px;
@@ -41,7 +42,8 @@ h1 {
 }
 
 /* --------Center Game Display-------- */
-.turn-display {
+.turn-display,
+.winner-display {
   display: flex;
   justify-content: center;
   margin-top: 7vh;

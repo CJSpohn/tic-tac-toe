@@ -8,6 +8,7 @@ window.onload = updateWinDisplay();
 var gameBoard = document.querySelector('.game-board');
 var turnImage = document.querySelector('.turn-image');
 var winnerDisplay = document.querySelector('.winner-display');
+var winnerImage = document.querySelector('.winner-image')
 var turnDisplay = document.querySelector('.turn-display');
 var allSquares = document.querySelectorAll('.square');
 
@@ -20,7 +21,7 @@ function takeTurn(event) {
     playToken(event);
     checkGameResults();
     game.changeTurn();
-    toggleToken();
+    toggleToken(turnImage);
   }
 }
 
@@ -40,15 +41,15 @@ function displayDraw() {
   turnDisplay.classList.add('hidden');
 }
 
-function toggleToken() {
+function toggleToken(image) {
   var currentPiece = game.turn.token;
   var currentSource = game.turn.playerImage
   if (currentPiece === `starfish`) {
-    turnImage.classList.add('starfish');
+    image.classList.add('starfish');
   } else {
-    turnImage.classList.remove('starfish');
+    image.classList.remove('starfish');
   }
-  turnImage.attributes.src.nodeValue = currentSource;
+  image.attributes.src.nodeValue = currentSource;
 }
 
 function playToken(event) {
@@ -78,10 +79,7 @@ function establishWinner() {
 function displayWinner() {
   winnerDisplay.classList.remove('hidden');
   turnDisplay.classList.add('hidden');
-  winnerDisplay.innerText = 'won!';
-  var winnerImage = `<img class="board-img ${game.turn.token} winner"
-    src="./assets/${game.turn.token}.svg" alt="${game.id}s piece">`;
-  winnerDisplay.insertAdjacentHTML('afterbegin', winnerImage);
+  toggleToken(winnerImage)
 }
 
 function updateWinDisplay() {
@@ -94,7 +92,7 @@ function resetGameBoard() {
     winnerDisplay.classList.add('hidden');
     turnDisplay.classList.remove('hidden');
     game.resetGameData(game.first);
-    toggleToken();
+    toggleToken(turnImage);
   }, 2000);
 }
 
