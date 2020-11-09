@@ -65,7 +65,7 @@ function insertToken(event) {
 }
 
 function disableSpace(event) {
-  event.target.disabled = true
+  event.target.disabled = true;
 }
 
 function establishWinner() {
@@ -101,7 +101,7 @@ function resetGameBoard() {
 function animateWinner(winningSpaces) {
   for (var i = 0; i < allSquares.length; i++) {
     var id = parseInt(allSquares[i].dataset.id);
-    var isWinningSquare = winningSpaces.includes(id)
+    var isWinningSquare = winningSpaces.includes(id);
     if (isWinningSquare) {
       allSquares[i].firstElementChild.classList.add('shake');
     }
