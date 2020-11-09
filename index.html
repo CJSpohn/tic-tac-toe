@@ -1,39 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <title>Tic Tac Toe</title>
-</head>
-<body>
-  <aside class="player-1">
-    <img class="player-img" src="./assets/sponge.svg" alt="A little yellow sponge">
-    <h1 class="player-1-wins"></h1>
-  </aside>
-  <section class="game-display">
-    <h1 class="turn-display">It's <img class="turn-image" src="./assets/sponge.svg" alt="Player token">'s turn</h1>
-    <h1 class="winner-display hidden"></h1>
-    <section class="game-board">
-      <button class="square" data-id="0"></button>
-      <button class="square" data-id="1"></button>
-      <button class="square" data-id="2"></button>
-      <button class="square" data-id="3"></button>
-      <button class="square" data-id="4"></button>
-      <button class="square" data-id="5"></button>
-      <button class="square" data-id="6"></button>
-      <button class="square" data-id="7"></button>
-      <button class="square" data-id="8"></button>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Chelsea+Market&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Tic Tac Toe</title>
+  </head>
+  <body>
+    <aside class="player-1">
+      <img class="player-img" src="./assets/sponge.svg" alt="A little yellow sponge">
+      <h1 class="player-1-wins"></h1>
+    </aside>
+    <section class="game-display">
+      <h1 class="turn-display">It's <img class="turn-image" src="./assets/sponge.svg" alt="Player token">'s turn</h1>
+      <h1 class="winner-display hidden"></h1>
+      <section class="game-board">
+        <button aria-label="Column 1 Row 1" class="square" data-id="0"></button>
+        <button aria-label="Column 2 Row 1" class="square" data-id="1"></button>
+        <button aria-label="Column 3 Row 1" class="square" data-id="2"></button>
+        <button aria-label="Column 1 Row 2" class="square" data-id="3"></button>
+        <button aria-label="Column 2 Row 2" class="square" data-id="4"></button>
+        <button aria-label="Column 3 Row 2" class="square" data-id="5"></button>
+        <button aria-label="Column 3 Row 1" class="square" data-id="6"></button>
+        <button aria-label="Column 3 Row 2" class="square" data-id="7"></button>
+        <button aria-label="Column 3 Row 3" class="square" data-id="8"></button>
+      </section>
     </section>
-  </section>
-  <aside class="player-2">
-    <img class="player-img starfish" src="assets/starfish.svg" alt="A pink starfish">
-    <h1 class="player-2-wins"></h1>
-  </aside>
-  <script src="src/player.js"></script>
-  <script src="src/game.js"></script>
-  <script src="src/main.js"></script>
-</body>
+    <aside class="player-2">
+      <img class="player-img starfish" src="assets/starfish.svg" alt="A pink starfish">
+      <h1 class="player-2-wins"></h1>
+    </aside>
+    <script src="src/player.js"></script>
+    <script src="src/game.js"></script>
+    <script src="src/main.js"></script>
+  </body>
 </html>
