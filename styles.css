@@ -2,8 +2,6 @@ html {
   font-family: 'Chelsea Market', cursive;
   margin: 0;
   padding: 0;
-  height: 100%;
-  width: 100%;
   overflow: hidden;
   background: linear-gradient(#00d4ff, #0477C2, #090976, #020024);
 }
@@ -93,7 +91,7 @@ h1 {
   display: none;
 }
 
-/* To counter svg starfish image being off center */
+/* The starfish svg was off center so these classes were added to adjust the board display and winner display */
 .starfish {
   top: 5px;
   left: 20px;

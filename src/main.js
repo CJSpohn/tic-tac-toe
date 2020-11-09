@@ -1,8 +1,9 @@
 var game = new Game(new Player(`player1`, `sponge`, JSON.parse(localStorage.getItem('player1'))),
-           new Player(`player2`, `starfish`, JSON.parse(localStorage.getItem('player2'))));
+                    new Player(`player2`, `starfish`, JSON.parse(localStorage.getItem('player2'))));
 
 var player1Wins = document.querySelector('.player-1-wins');
 var player2Wins = document.querySelector('.player-2-wins');
+
 window.onload = updateWinDisplay();
 var gameBoard = document.querySelector('.game-board');
 var turnImage = document.querySelector('.turn-image');
@@ -15,12 +16,13 @@ gameBoard.addEventListener('click', function(event) {
 })
 
 function takeTurn(event) {
-  if (event.target.classList.contains('square') && event.target.innerHTML === "" && game.playable) {
-      playToken(event);
-      checkGameResults();
-      game.changeTurn();
-      toggleToken();
-    }
+  var spaceIsOpen = event.target.innerHTML === ""
+  if (event.target.classList.contains('square') && spaceIsOpen && game.playable) {
+    playToken(event);
+    checkGameResults();
+    game.changeTurn();
+    toggleToken();
+  }
 }
 
 function checkGameResults() {
@@ -28,21 +30,26 @@ function checkGameResults() {
     establishWinner();
     return resetGameBoard();
   } else if (game.checkDraw()) {
-    winnerDisplay.innerText = "It's a draw!";
-    winnerDisplay.classList.remove('hidden');
-    turnDisplay.classList.add('hidden');
+    displayDraw();
     return resetGameBoard();
   }
 }
 
+function displayDraw() {
+  winnerDisplay.innerText = "It's a draw!";
+  winnerDisplay.classList.remove('hidden');
+  turnDisplay.classList.add('hidden');
+}
+
 function toggleToken() {
   var currentPiece = game.turn.token;
+  var currentSource = game.turn.playerImage
   if (currentPiece === `starfish`) {
     turnImage.classList.add('starfish');
   } else {
     turnImage.classList.remove('starfish');
   }
-  turnImage.attributes.src.nodeValue = game.turn.playerImage;
+  turnImage.attributes.src.nodeValue = currentSource;
 }
 
 function playToken(event) {
@@ -87,11 +94,11 @@ function resetGameBoard() {
   }, 2000);
 }
 
-function animateWinner(array) {
+function animateWinner(winningSpaces) {
   for (var i = 0; i < allSquares.length; i++) {
     var id = parseInt(allSquares[i].dataset.id);
-    var shouldAnimateWinner = array.includes(id)
-    if (shouldAnimateWinner) {
+    var isWinningSquare= winningSpaces.includes(id)
+    if (isWinningSquare) {
       allSquares[i].firstElementChild.classList.add('shake');
     }
   }
