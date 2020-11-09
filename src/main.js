@@ -7,9 +7,11 @@ var player2Wins = document.querySelector('.player-2-wins');
 window.onload = updateWinDisplay();
 var gameBoard = document.querySelector('.game-board');
 var turnImage = document.querySelector('.turn-image');
-var winnerDisplay = document.querySelector('.winner-display');
 var winnerImage = document.querySelector('.winner-image')
+var winnerDisplay = document.querySelector('.winner-display');
 var turnDisplay = document.querySelector('.turn-display');
+var endGameDisplay = document.querySelector('.end-game-display')
+var drawDisplay = document.querySelector('.draw-display')
 var allSquares = document.querySelectorAll('.square');
 
 gameBoard.addEventListener('click', function(event) {
@@ -30,15 +32,9 @@ function checkGameResults() {
     establishWinner();
     return resetGameBoard();
   } else if (game.checkDraw()) {
-    displayDraw();
+    displayEndGame(drawDisplay);
     return resetGameBoard();
   }
-}
-
-function displayDraw() {
-  winnerDisplay.innerText = "It's a draw!";
-  winnerDisplay.classList.remove('hidden');
-  turnDisplay.classList.add('hidden');
 }
 
 function toggleToken(image) {
@@ -71,15 +67,18 @@ function disableSpace(event) {
 
 function establishWinner() {
   game.plays++;
-  displayWinner();
+  displayEndGame(winnerDisplay);
   game.giveWinToPlayer();
   updateWinDisplay();
 }
 
-function displayWinner() {
-  winnerDisplay.classList.remove('hidden');
+function displayEndGame(gameResultDisplay) {
   turnDisplay.classList.add('hidden');
-  toggleToken(winnerImage)
+  endGameDisplay.classList.remove('hidden');
+  gameResultDisplay.classList.remove('hidden')
+  if (gameResultDisplay === winnerDisplay) {
+    toggleToken(winnerImage)
+  }
 }
 
 function updateWinDisplay() {
@@ -89,6 +88,8 @@ function updateWinDisplay() {
 
 function resetGameBoard() {
   setTimeout(function() {
+    endGameDisplay.classList.add('hidden');
+    drawDisplay.classList.add('hidden');
     winnerDisplay.classList.add('hidden');
     turnDisplay.classList.remove('hidden');
     game.resetGameData(game.first);
