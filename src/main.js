@@ -62,6 +62,12 @@ function insertToken(event) {
   var playerImage = game.turn.token;
   event.target.insertAdjacentHTML('afterbegin', game.turn.tokenId);
   game.board[squareNumber].splice(0, 1, playerImage);
+  disableSpace(event);
+}
+
+function disableSpace(event) {
+  event.target.disabled = true
+  console.log(event.target)
 }
 
 function establishWinner() {
