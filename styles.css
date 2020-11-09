@@ -43,6 +43,10 @@ h1 {
   margin-top: 4vh;
 }
 
+.draw-display {
+  margin-top: 10vh;
+}
+
 .turn-image,
 .winner-image {
   position: relative;
