@@ -10,7 +10,9 @@ body {
   display: flex;
 }
 
-/* --------Asides-------- */
+/* ======================================================
+   Asides
+   ====================================================== */
 h1 {
   font-size: 4vw;
 }
@@ -33,7 +35,9 @@ h1 {
   margin-top: 5vw;
 }
 
-/* --------Center Game Display-------- */
+/* ======================================================
+   Central Game Display
+   ====================================================== */
 .header-display,
 .draw-display {
   font-size: 4vw;
@@ -97,13 +101,16 @@ h1 {
   display: none;
 }
 
-/* The starfish svg was off center so these classes were added to adjust the board display and winner display */
+/* The starfish svg I found is off center so these classes were added to adjust
+ the display. */
 .starfish {
   top: 5px;
   left: 20px;
 }
 
-/* --------Winner Animations-------- */
+/* ======================================================
+   Winner Animation
+   ====================================================== */
 @keyframes dance {
   10% {
     transform: translate(0, -20px);
