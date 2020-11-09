@@ -15,13 +15,6 @@ h1 {
   font-size: 4vw;
 }
 
-.turn-image,
-.winner-image {
-  position: relative;
-  margin: 0px;
-  width: 10vw;
-}
-
 .player-1,
 .player-2 {
   width: 25vw;
@@ -41,11 +34,20 @@ h1 {
 
 /* --------Center Game Display-------- */
 .turn-display,
-.winner-display {
+.winner-display,
+.draw-display {
+  font-size: 4vw;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 4vh;
+}
+
+.turn-image,
+.winner-image {
+  position: relative;
+  margin: 0px;
+  width: 10vw;
 }
 
 .game-display {
@@ -87,7 +89,6 @@ h1 {
   position: relative;
   margin: 0;
   width: 65%;
-  height: 80%
 }
 
 .hidden {
