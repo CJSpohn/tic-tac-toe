@@ -16,8 +16,7 @@ gameBoard.addEventListener('click', function(event) {
 })
 
 function takeTurn(event) {
-  var spaceIsOpen = event.target.innerHTML === ""
-  if (event.target.classList.contains('square') && spaceIsOpen && game.playable) {
+  if (event.target.classList.contains('square') && game.playable) {
     playToken(event);
     checkGameResults();
     game.changeTurn();
@@ -62,6 +61,11 @@ function insertToken(event) {
   var playerImage = game.turn.token;
   event.target.insertAdjacentHTML('afterbegin', game.turn.tokenId);
   game.board[squareNumber].splice(0, 1, playerImage);
+  disableSpace(event);
+}
+
+function disableSpace(event) {
+  event.target.disabled = true;
 }
 
 function establishWinner() {
@@ -97,7 +101,7 @@ function resetGameBoard() {
 function animateWinner(winningSpaces) {
   for (var i = 0; i < allSquares.length; i++) {
     var id = parseInt(allSquares[i].dataset.id);
-    var isWinningSquare = winningSpaces.includes(id)
+    var isWinningSquare = winningSpaces.includes(id);
     if (isWinningSquare) {
       allSquares[i].firstElementChild.classList.add('shake');
     }
