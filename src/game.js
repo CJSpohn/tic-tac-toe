@@ -32,7 +32,7 @@ class Game {
   checkRows() {
     for (var i = 0; i < 9; i++) {
       if (this.board[i][0] === this.board[i+1][0] && this.board[i][0] === this.board[i+2][0]) {
-        animateWinner(i, i+1, i+2);
+        animateWinner([i, i+1, i+2]);
         return true
       }
       i += 2
@@ -42,7 +42,7 @@ class Game {
   checkCols() {
     for (var i = 0; i < 3; i++) {
       if (this.board[i][0] === this.board[i+3][0] && this.board[i][0] === this.board[i+6][0]) {
-        animateWinner(i, i+3, i+6);
+        animateWinner([i, i+3, i+6]);
         return true
       }
     }
@@ -50,10 +50,10 @@ class Game {
 
   checkDiags() {
     if (this.board[0][0] === this.board[4][0] && this.board[0][0] === this.board[8][0]) {
-      animateWinner(0, 4, 8);
+      animateWinner([0, 4, 8]);
       return true
     } else if (this.board[2][0] === this.board[4][0] && this.board[2][0] === this.board[6][0]) {
-      animateWinner(2, 4, 6);
+      animateWinner([2, 4, 6]);
       return true
     }
   }

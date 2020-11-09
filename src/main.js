@@ -87,12 +87,10 @@ function resetGameBoard() {
   }, 2000);
 }
 
-function animateWinner(square1, square2, square3) {
+function animateWinner(array) {
   for (var i = 0; i < allSquares.length; i++) {
     var id = parseInt(allSquares[i].dataset.id);
-    var shouldAnimateWinner = id === square1
-      || id === square2
-      || id === square3;
+    var shouldAnimateWinner = array.includes(id)
     if (shouldAnimateWinner) {
       allSquares[i].firstElementChild.classList.add('shake');
     }
