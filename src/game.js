@@ -78,14 +78,7 @@ class Game {
     var player1 = new Player(game.players[0].id, game.players[0].gamePieceName, game.players[0].wins);
     var player2 = new Player(game.players[1].id, game.players[1].gamePieceName, game.players[1].wins);
     game = new Game(player1, player2, game.plays);
-    game.clearBoard();
+    clearBoard();
   }
 
-  clearBoard() {
-    var boardSpaces = document.querySelectorAll('.js-space');
-    for (var i = 0; i < boardSpaces.length; i++) {
-      boardSpaces[i].innerHTML = "";
-      boardSpaces[i].disabled = false;
-    }
-  }
 }

@@ -100,6 +100,14 @@ function resetGameBoard() {
   }, 2000);
 }
 
+function clearBoard() {
+  var boardSpaces = document.querySelectorAll('.js-space');
+  for (var i = 0; i < boardSpaces.length; i++) {
+    boardSpaces[i].innerHTML = "";
+    boardSpaces[i].disabled = false;
+  }
+}
+
 function animateWinner(winningSpaces) {
   for (var i = 0; i < allSquares.length; i++) {
     var id = parseInt(allSquares[i].dataset.id);
