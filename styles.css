@@ -28,8 +28,8 @@ h1 {
 
 .player__image {
   position: relative;
-  margin-top: 3vw;
   width: 8vw;
+  margin-top: 3vw;
 }
 
 /* ======================================================
@@ -41,8 +41,8 @@ h1 {
 .game {
    width: 50vw;
    height: 105vh;
-   margin: -2vh 0 0 0;
    padding: 0;
+   margin-top: -3vh;
    text-align: center;
    background: white;
 }
@@ -61,6 +61,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: -2vh;
 }
 
 .game__image {
@@ -94,7 +95,8 @@ h1 {
   background-color: white;
 }
 
-.game__board--square:focus {
+.game__board--square:focus,
+.game__clear-btn {
   outline: none;
 }
 
@@ -103,6 +105,22 @@ h1 {
   margin: 0;
   width: 65%;
 }
+
+.game__clear-btn {
+  width: 35%;
+  height: 3%;
+  font-family: 'Chelsea Market', cursive;
+  border: none;
+  border-radius: 5px;
+  color: #FFFFFF;
+  background: #0477C2;
+}
+
+.game__clear-btn:active {
+  margin: 1px 0 0 1px;
+  box-shadow: inset 2px 2px 5px #020024;
+}
+
 
 .hidden {
   display: none;
