@@ -1,8 +1,8 @@
 var game = new Game(new Player(`player1`, `sponge`, JSON.parse(localStorage.getItem('player1'))),
                     new Player(`player2`, `starfish`, JSON.parse(localStorage.getItem('player2'))));
 
-var player1Wins = document.querySelector('.js-p1-wins');
-var player2Wins = document.querySelector('.js-p2-wins');
+var player1Wins = document.querySelector('.js-player1-wins');
+var player2Wins = document.querySelector('.js-player2-wins');
 
 window.onload = updateWinDisplay();
 var gameBoard = document.querySelector('.js-board');
