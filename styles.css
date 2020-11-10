@@ -14,7 +14,7 @@ body {
    Asides
    ====================================================== */
 h1 {
-  font-size: 4vw;
+  font-size: 3vw;
 }
 
 .player-block {
@@ -28,8 +28,8 @@ h1 {
 
 .player-block__image {
   position: relative;
-  margin-top: 5vw;
-  width: 12vw;
+  margin-top: 3vw;
+  width: 8vw;
 }
 
 /* ======================================================
@@ -54,7 +54,7 @@ h1 {
   align-items: center;
   justify-content: center;
   margin-top: 4vh;
-  font-size: 4vw;
+  font-size: 3vw;
 }
 
 .game-block__header--win {
@@ -63,16 +63,13 @@ h1 {
   align-items: center;
 }
 
-.game-block__image {
+.game-block__image,
+.game-block__image--win {
   position: relative;
-  width: 12vw;
+  width: 10vw;
   margin: 0px;
 }
 
-.game-block__image--win {
-  position: relative;
-  width: 14vw;
-}
 
 /* Game Board */
 
@@ -81,9 +78,9 @@ h1 {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   grid-gap: 8px;
-  margin: 10vh auto;
+  margin: 6vh auto;
   width: 90%;
-  height: 50vh;
+  height: 60vh;
   min-height: 400px;
   background: linear-gradient(#233656, #70B9AC, #E87A4C, #B99496);
 }
