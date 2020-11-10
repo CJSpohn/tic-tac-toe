@@ -44,7 +44,7 @@ function toggleToken(image) {
   } else {
     image.classList.remove('starfish');
   }
-  image.attributes.src.nodeValue = game.turn.playerImageSrc;
+  image.attributes.src.nodeValue = `./assets/${game.turn.gamePieceName}.svg`
   image.attributes.alt.nodeValue = `${game.turn.gamePieceName}'s token`;
 }
 

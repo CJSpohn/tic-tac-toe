@@ -2,7 +2,6 @@ class Player {
   constructor(player, gamePiece, wins) {
     this.id = player;
     this.gamePieceName = gamePiece;
-    this.playerImageSrc = `./assets/${gamePiece}.svg`;
     this.wins = wins || 0;
   }
 
