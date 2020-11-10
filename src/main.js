@@ -111,6 +111,11 @@ function clearBoard() {
   }
 }
 
+function clearWins() {
+  localStorage.clear();
+  location.reload();
+}
+
 function animateWinner(winningSpaces) {
   var id;
   var isWinningSquare;
