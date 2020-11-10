@@ -1,9 +1,8 @@
 class Player {
-  constructor(player, token, wins) {
+  constructor(player, gamePiece, wins) {
     this.id = player;
-    this.gamePieceName = token;
-    this.playerImage = `./assets/${token}.svg`;
-    this.tokenId = `<img class="board-img ${token}" src="./assets/${token}.svg" alt="${this.id}'s piece">`;
+    this.gamePieceName = gamePiece;
+    this.playerImageSrc = `./assets/${gamePiece}.svg`;
     this.wins = wins || 0;
   }
 

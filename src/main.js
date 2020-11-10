@@ -38,14 +38,14 @@ function checkGameResults() {
 }
 
 function toggleToken(image) {
-  var currentPiece = game.turn..gamePieceName;
+  var currentPiece = game.turn.gamePieceName;
   if (currentPiece === `starfish`) {
     image.classList.add('starfish');
   } else {
     image.classList.remove('starfish');
   }
-  image.attributes.src.nodeValue = game.turn.playerImage;
-  image.attributes.alt.nodeValue = `${game.turn..gamePieceName}'s token`;
+  image.attributes.src.nodeValue = game.turn.playerImageSrc;
+  image.attributes.alt.nodeValue = `${game.turn.gamePieceName}'s token`;
 }
 
 function playToken(event) {
@@ -55,7 +55,8 @@ function playToken(event) {
 
 function insertToken(event) {
   var squareNumber = parseInt(event.target.dataset.id);
-  var playerImage = game.turn.tokenId;
+  var playerImage = `<img class="board-img ${game.turn.gamePieceName}"
+    src="./assets/${game.turn.gamePieceName}.svg" alt="${game.turn.id}'s piece">`;
   event.target.insertAdjacentHTML('afterbegin', playerImage);
   game.board[squareNumber].splice(0, 1, playerImage);
   disableSpace(event);
