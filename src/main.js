@@ -4,7 +4,7 @@ var game = new Game(new Player(`player1`, `sponge`),
 var player1Wins = document.querySelector('.js-player1-wins');
 var player2Wins = document.querySelector('.js-player2-wins');
 
-window.onload = getWins();
+window.onload = loadWins();
 var clearWinsBtn = document.querySelector('.js-clear-wins')
 var gameBoard = document.querySelector('.js-board');
 var turnImage = document.querySelector('.js-turn-image');
@@ -87,7 +87,7 @@ function displayEndGame() {
   }
 }
 
-function getWins() {
+function loadWins() {
   game.players[0].retrieveWinsFromStorage();
   game.players[1].retrieveWinsFromStorage();
   updateWinDisplay();
