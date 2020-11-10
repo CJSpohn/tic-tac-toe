@@ -38,14 +38,14 @@ function checkGameResults() {
 }
 
 function toggleToken(image) {
-  var currentPiece = game.turn.token;
+  var currentPiece = game.turn..gamePieceName;
   if (currentPiece === `starfish`) {
     image.classList.add('starfish');
   } else {
     image.classList.remove('starfish');
   }
   image.attributes.src.nodeValue = game.turn.playerImage;
-  image.attributes.alt.nodeValue = `${game.turn.token}'s token`;
+  image.attributes.alt.nodeValue = `${game.turn..gamePieceName}'s token`;
 }
 
 function playToken(event) {
