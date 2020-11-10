@@ -15,15 +15,15 @@
     </aside>
     <section class="game">
       <div class="game__header js-turn-display">
-        <p>It's</p>
+        <h1>It's</h1>
         <img class="game__image js-turn-image" src="./assets/sponge.svg" alt="sponge's token">
-        <p>'s turn</p>
+        <h1>'s turn</h1>
       </div>
       <div class="game__header js-end-game hidden">
-        <p class="game__header-draw js-draw hidden">It's a draw!</p>
+        <h1 class="game__header-draw js-draw hidden">It's a draw!</h1>
         <section class="game__header--win js-winner hidden">
           <img class="game__image js-winner-image" src="./assets/sponge.svg" alt="Winning player token">
-          <p> Won!</p>
+          <h1> Won!</h1>
         </section>
       </div>
       <section class="game__board js-board">
@@ -37,6 +37,7 @@
         <button aria-label="Column 3 Row 2" class="game__board--square js-space" data-id="7"></button>
         <button aria-label="Column 3 Row 3" class="game__board--square js-space" data-id="8"></button>
       </section>
+      <button class="game__clear-btn js-clear-wins">Clear Wins</button>
     </section>
     <aside class="player">
       <img class="player__image starfish" src="assets/starfish.svg" alt="A pink starfish">

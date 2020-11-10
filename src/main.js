@@ -5,6 +5,7 @@ var player1Wins = document.querySelector('.js-player1-wins');
 var player2Wins = document.querySelector('.js-player2-wins');
 
 window.onload = updateWinDisplay();
+var clearWinsBtn = document.querySelector('.js-clear-wins')
 var gameBoard = document.querySelector('.js-board');
 var turnImage = document.querySelector('.js-turn-image');
 var winnerImage = document.querySelector('.js-winner-image')
@@ -17,6 +18,8 @@ var allSquares = document.querySelectorAll('.js-space');
 gameBoard.addEventListener('click', function(event) {
   takeTurn(event);
 })
+
+clearWinsBtn.addEventListener('click', clearWins);
 
 function takeTurn(event) {
   if (event.target.classList.contains('js-space') && game.playable) {
