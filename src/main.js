@@ -109,9 +109,11 @@ function clearBoard() {
 }
 
 function animateWinner(winningSpaces) {
+  var id;
+  var isWinningSquare;
   for (var i = 0; i < allSquares.length; i++) {
-    var id = parseInt(allSquares[i].dataset.id);
-    var isWinningSquare = winningSpaces.includes(id);
+    id = parseInt(allSquares[i].dataset.id);
+    isWinningSquare = winningSpaces.includes(id);
     if (isWinningSquare) {
       allSquares[i].firstElementChild.classList.add('dance');
     }
