@@ -2,6 +2,7 @@ html {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  overflow-anchor: none;
   font-family: 'Chelsea Market', cursive;
   background: linear-gradient(#00d4ff, #0477C2, #090976, #020024);
 }

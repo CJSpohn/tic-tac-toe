@@ -5,10 +5,15 @@ class Player {
     this.wins = wins || 0;
   }
 
-  saveWinsToStorage(player) {
-    var savedWins = JSON.parse(localStorage.getItem(player.id)) || 0;
-    savedWins = player.wins;
-    localStorage.setItem(player.id, savedWins);
+  saveWinsToStorage() {
+    var savedWins = JSON.parse(localStorage.getItem(this.id)) || 0;
+    savedWins = this.wins;
+    localStorage.setItem(this.id, savedWins);
+  }
+
+  retrieveWinsFromStorage() {
+    var savedWins = JSON.parse(localStorage.getItem(this.id)) || 0;
+    this.wins = savedWins;
   }
 
 }
