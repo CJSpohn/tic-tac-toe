@@ -71,7 +71,7 @@ class Game {
   giveWinToPlayer() {
     this.turn.wins++;
     var winningPlayer = this.turn;
-    winningPlayer.saveWinsToStorage(winningPlayer);
+    winningPlayer.saveWinsToStorage();
   }
 
   resetGameData(first) {

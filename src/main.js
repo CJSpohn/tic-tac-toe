@@ -1,10 +1,10 @@
-var game = new Game(new Player(`player1`, `sponge`, JSON.parse(localStorage.getItem('player1'))),
-                    new Player(`player2`, `starfish`, JSON.parse(localStorage.getItem('player2'))));
+var game = new Game(new Player(`player1`, `sponge`),
+                    new Player(`player2`, `starfish`));
 
 var player1Wins = document.querySelector('.js-player1-wins');
 var player2Wins = document.querySelector('.js-player2-wins');
 
-window.onload = updateWinDisplay();
+window.onload = getWins();
 var clearWinsBtn = document.querySelector('.js-clear-wins')
 var gameBoard = document.querySelector('.js-board');
 var turnImage = document.querySelector('.js-turn-image');
@@ -85,6 +85,12 @@ function displayEndGame() {
     toggleToken(winnerImage);
     winnerDisplay.classList.remove('hidden');
   }
+}
+
+function getWins() {
+  game.players[0].retrieveWinsFromStorage();
+  game.players[1].retrieveWinsFromStorage();
+  updateWinDisplay();
 }
 
 function updateWinDisplay() {
