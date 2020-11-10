@@ -17,21 +17,19 @@ h1 {
   font-size: 4vw;
 }
 
-.player-1,
-.player-2 {
+.player-block {
   text-align: center;
   width: 25vw;
 }
 
-.player-1-wins,
-.player-2-wins {
+.player-block__wins {
   margin: 0;
 }
 
 /* Images */
 
-.player-image,
-.turn-image {
+.player-block__image,
+.game-block__image {
   position: relative;
   margin-top: 5vw;
   width: 10vw;
@@ -42,7 +40,7 @@ h1 {
    ====================================================== */
 
 /* Central game column */
-.game-display {
+.game-block {
    width: 50vw;
    height: 105vh;
    margin: -2vh 0 0 0;
@@ -53,7 +51,7 @@ h1 {
 
 /* Top display */
 
-.header-display,
+.game-block__header,
 .draw-display {
   display: flex;
   align-items: center;
@@ -62,18 +60,17 @@ h1 {
   font-size: 4vw;
 }
 
-.draw-display {
-  margin-top: 10vh;
+.game-block__header--win {
+  display: flex;
 }
 
-.turn-image,
-.winner-image {
+.game-block__image {
   margin: 0px;
 }
 
-/* Game Board */ 
+/* Game Board */
 
-.game-board {
+.game-block__game-board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -85,7 +82,7 @@ h1 {
   background: linear-gradient(#233656, #70B9AC, #E87A4C, #B99496);
 }
 
-.square {
+.game-block__game-board--square {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -95,11 +92,11 @@ h1 {
   background-color: white;
 }
 
-.square:focus {
+.game-block__game-board--square:focus {
   outline: none;
 }
 
-.board-img {
+.game-block__game-board--square-image {
   position: relative;
   margin: 0;
   width: 65%;

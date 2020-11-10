@@ -82,7 +82,7 @@ class Game {
   }
 
   clearBoard() {
-    var boardSpaces = document.querySelectorAll('.square');
+    var boardSpaces = document.querySelectorAll('.js-space');
     for (var i = 0; i < boardSpaces.length; i++) {
       boardSpaces[i].innerHTML = "";
       boardSpaces[i].disabled = false;

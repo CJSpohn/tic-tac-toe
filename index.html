@@ -9,38 +9,38 @@
     <title>Tic Tac Toe</title>
   </head>
   <body>
-    <aside class="player-1">
-      <img class="player-image" src="./assets/sponge.svg" alt="A yellow sponge">
-      <h1 class="player-1-wins js-player1-wins"></h1>
+    <aside class="player-block">
+      <img class="player-block__image" src="./assets/sponge.svg" alt="A yellow sponge">
+      <h1 class="player-block__wins js-player1-wins"></h1>
     </aside>
-    <section class="game-display">
-      <div class="header-display js-turn-display">
+    <section class="game-block">
+      <div class="game-block__header js-turn-display">
         <p>It's</p>
-        <img class="turn-image js-turn-image" src="./assets/sponge.svg" alt="sponge's token">
+        <img class="game-block__image js-turn-image" src="./assets/sponge.svg" alt="sponge's token">
         <p>'s turn</p>
       </div>
-      <div class="end-game-display js-end-game hidden">
-        <p class="draw-display js-draw hidden">It's a draw!</p>
-        <section class="header-display js-winner hidden">
-          <img class="turn-image js-winner-image" src="./assets/sponge.svg" alt="Winning player token">
+      <div class="game-block__header js-end-game hidden">
+        <p class="js-draw hidden">It's a draw!</p>
+        <section class="game-block__header--win js-winner hidden">
+          <img class="game-block__image js-winner-image" src="./assets/sponge.svg" alt="Winning player token">
           <p>Won!</p>
         </section>
       </div>
-      <section class="game-board js-board">
-        <button aria-label="Column 1 Row 1" class="square js-space" data-id="0"></button>
-        <button aria-label="Column 2 Row 1" class="square js-space" data-id="1"></button>
-        <button aria-label="Column 3 Row 1" class="square js-space" data-id="2"></button>
-        <button aria-label="Column 1 Row 2" class="square js-space" data-id="3"></button>
-        <button aria-label="Column 2 Row 2" class="square js-space" data-id="4"></button>
-        <button aria-label="Column 3 Row 2" class="square js-space" data-id="5"></button>
-        <button aria-label="Column 3 Row 1" class="square js-space" data-id="6"></button>
-        <button aria-label="Column 3 Row 2" class="square js-space" data-id="7"></button>
-        <button aria-label="Column 3 Row 3" class="square js-space" data-id="8"></button>
+      <section class="game-block__game-board js-board">
+        <button aria-label="Column 1 Row 1" class="game-block__game-board--square js-space" data-id="0"></button>
+        <button aria-label="Column 2 Row 1" class="game-block__game-board--square js-space" data-id="1"></button>
+        <button aria-label="Column 3 Row 1" class="game-block__game-board--square js-space" data-id="2"></button>
+        <button aria-label="Column 1 Row 2" class="game-block__game-board--square js-space" data-id="3"></button>
+        <button aria-label="Column 2 Row 2" class="game-block__game-board--square js-space" data-id="4"></button>
+        <button aria-label="Column 3 Row 2" class="game-block__game-board--square js-space" data-id="5"></button>
+        <button aria-label="Column 3 Row 1" class="game-block__game-board--square js-space" data-id="6"></button>
+        <button aria-label="Column 3 Row 2" class="game-block__game-board--square js-space" data-id="7"></button>
+        <button aria-label="Column 3 Row 3" class="game-block__game-board--square js-space" data-id="8"></button>
       </section>
     </section>
-    <aside class="player-2">
-      <img class="player-image starfish" src="assets/starfish.svg" alt="A pink starfish">
-      <h1 class="player-2-wins js-player2-wins"></h1>
+    <aside class="player-block">
+      <img class="player-block__image starfish" src="assets/starfish.svg" alt="A pink starfish">
+      <h1 class="player-block__wins js-player2-wins"></h1>
     </aside>
     <script src="src/player.js"></script>
     <script src="src/game.js"></script>
