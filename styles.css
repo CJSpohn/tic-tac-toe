@@ -17,16 +17,16 @@ h1 {
   font-size: 3vw;
 }
 
-.player-block {
+.player {
   text-align: center;
   width: 25vw;
 }
 
-.player-block__wins {
+.player__wins {
   margin: 0;
 }
 
-.player-block__image {
+.player__image {
   position: relative;
   margin-top: 3vw;
   width: 8vw;
@@ -38,7 +38,7 @@ h1 {
 
 /* Central game column */
 
-.game-block {
+.game {
    width: 50vw;
    height: 105vh;
    margin: -2vh 0 0 0;
@@ -49,7 +49,7 @@ h1 {
 
 /* Top display */
 
-.game-block__header {
+.game__header {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,13 +57,13 @@ h1 {
   font-size: 3vw;
 }
 
-.game-block__header--win {
+.game__header--win {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.game-block__image {
+.game__image {
   position: relative;
   width: 10vw;
   margin: 0px;
@@ -72,7 +72,7 @@ h1 {
 
 /* Game Board */
 
-.game-block__game-board {
+.game__board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
@@ -84,7 +84,7 @@ h1 {
   background: linear-gradient(#233656, #70B9AC, #E87A4C, #B99496);
 }
 
-.game-block__game-board--square {
+.game__board--square {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,11 +94,11 @@ h1 {
   background-color: white;
 }
 
-.game-block__game-board--square:focus {
+.game__board--square:focus {
   outline: none;
 }
 
-.game-block__game-board--square-image {
+.game__board--square-image {
   position: relative;
   margin: 0;
   width: 65%;

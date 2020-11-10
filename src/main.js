@@ -55,7 +55,7 @@ function playToken(event) {
 
 function insertToken(event) {
   var squareNumber = parseInt(event.target.dataset.id);
-  var playerImage = `<img class="game-block__game-board--square-image ${game.turn.gamePieceName}"
+  var playerImage = `<img class="game__board--square-image ${game.turn.gamePieceName}"
     src="./assets/${game.turn.gamePieceName}.svg" alt="${game.turn.id}'s piece">`;
   event.target.insertAdjacentHTML('afterbegin', playerImage);
   game.board[squareNumber].splice(0, 1, playerImage);
