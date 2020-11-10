@@ -1,26 +1,29 @@
 var game = new Game(new Player(`player1`, `sponge`, JSON.parse(localStorage.getItem('player1'))),
                     new Player(`player2`, `starfish`, JSON.parse(localStorage.getItem('player2'))));
 
-var player1Wins = document.querySelector('.player-1-wins');
-var player2Wins = document.querySelector('.player-2-wins');
+var player1Wins = document.querySelector('.js-player1-wins');
+var player2Wins = document.querySelector('.js-player2-wins');
 
 window.onload = updateWinDisplay();
-var gameBoard = document.querySelector('.game-board');
-var turnImage = document.querySelector('.turn-image');
-var winnerDisplay = document.querySelector('.winner-display');
-var turnDisplay = document.querySelector('.turn-display');
-var allSquares = document.querySelectorAll('.square');
+var gameBoard = document.querySelector('.js-board');
+var turnImage = document.querySelector('.js-turn-image');
+var winnerImage = document.querySelector('.js-winner-image')
+var winnerDisplay = document.querySelector('.js-winner');
+var turnDisplay = document.querySelector('.js-turn-display');
+var endGameDisplay = document.querySelector('.js-end-game')
+var drawDisplay = document.querySelector('.js-draw')
+var allSquares = document.querySelectorAll('.js-space');
 
 gameBoard.addEventListener('click', function(event) {
   takeTurn(event);
 })
 
 function takeTurn(event) {
-  if (event.target.classList.contains('square') && game.playable) {
+  if (event.target.classList.contains('js-space') && game.playable) {
     playToken(event);
     checkGameResults();
     game.changeTurn();
-    toggleToken();
+    toggleToken(turnImage);
   }
 }
 
@@ -29,26 +32,20 @@ function checkGameResults() {
     establishWinner();
     return resetGameBoard();
   } else if (game.checkDraw()) {
-    displayDraw();
+    displayEndGame();
     return resetGameBoard();
   }
 }
 
-function displayDraw() {
-  winnerDisplay.innerText = "It's a draw!";
-  winnerDisplay.classList.remove('hidden');
-  turnDisplay.classList.add('hidden');
-}
-
-function toggleToken() {
-  var currentPiece = game.turn.token;
-  var currentSource = game.turn.playerImage
+function toggleToken(image) {
+  var currentPiece = game.turn.gamePieceName;
   if (currentPiece === `starfish`) {
-    turnImage.classList.add('starfish');
+    image.classList.add('starfish');
   } else {
-    turnImage.classList.remove('starfish');
+    image.classList.remove('starfish');
   }
-  turnImage.attributes.src.nodeValue = currentSource;
+  image.attributes.src.nodeValue = `./assets/${currentPiece}.svg`
+  image.attributes.alt.nodeValue = `${currentPiece}'s token`;
 }
 
 function playToken(event) {
@@ -58,8 +55,9 @@ function playToken(event) {
 
 function insertToken(event) {
   var squareNumber = parseInt(event.target.dataset.id);
-  var playerImage = game.turn.token;
-  event.target.insertAdjacentHTML('afterbegin', game.turn.tokenId);
+  var playerImage = `<img class="game-block__game-board--square-image ${game.turn.gamePieceName}"
+    src="./assets/${game.turn.gamePieceName}.svg" alt="${game.turn.id}'s piece">`;
+  event.target.insertAdjacentHTML('afterbegin', playerImage);
   game.board[squareNumber].splice(0, 1, playerImage);
   disableSpace(event);
 }
@@ -70,18 +68,20 @@ function disableSpace(event) {
 
 function establishWinner() {
   game.plays++;
-  displayWinner();
+  displayEndGame();
   game.giveWinToPlayer();
   updateWinDisplay();
 }
 
-function displayWinner() {
-  winnerDisplay.classList.remove('hidden');
+function displayEndGame() {
   turnDisplay.classList.add('hidden');
-  winnerDisplay.innerText = 'won!';
-  var winnerImage = `<img class="board-img ${game.turn.token} winner"
-    src="./assets/${game.turn.token}.svg" alt="${game.id}s piece">`;
-  winnerDisplay.insertAdjacentHTML('afterbegin', winnerImage);
+  endGameDisplay.classList.remove('hidden');
+  if (game.drawCount === 9 && game.isWon === false) {
+    drawDisplay.classList.remove('hidden');
+  } else {
+    toggleToken(winnerImage);
+    winnerDisplay.classList.remove('hidden');
+  }
 }
 
 function updateWinDisplay() {
@@ -91,10 +91,12 @@ function updateWinDisplay() {
 
 function resetGameBoard() {
   setTimeout(function() {
+    endGameDisplay.classList.add('hidden');
+    drawDisplay.classList.add('hidden');
     winnerDisplay.classList.add('hidden');
     turnDisplay.classList.remove('hidden');
     game.resetGameData(game.first);
-    toggleToken();
+    toggleToken(turnImage);
   }, 2000);
 }
 
@@ -103,7 +105,7 @@ function animateWinner(winningSpaces) {
     var id = parseInt(allSquares[i].dataset.id);
     var isWinningSquare = winningSpaces.includes(id);
     if (isWinningSquare) {
-      allSquares[i].firstElementChild.classList.add('shake');
+      allSquares[i].firstElementChild.classList.add('dance');
     }
   }
 }
