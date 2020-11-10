@@ -1,5 +1,4 @@
-var game = new Game(new Player(`player1`, `sponge`),
-                    new Player(`player2`, `starfish`));
+var game = new Game(new Player(`player1`, `sponge`), new Player(`player2`, `starfish`));
 
 var player1Wins = document.querySelector('.js-player1-wins');
 var player2Wins = document.querySelector('.js-player2-wins');
@@ -104,7 +103,7 @@ function resetGameBoard() {
     drawDisplay.classList.add('hidden');
     winnerDisplay.classList.add('hidden');
     turnDisplay.classList.remove('hidden');
-    game.resetGameData(game.first);
+    game.resetGameData();
     toggleToken(turnImage);
   }, 2000);
 }
