@@ -26,13 +26,10 @@ h1 {
   margin: 0;
 }
 
-/* Images */
-
-.player-block__image,
-.game-block__image {
+.player-block__image {
   position: relative;
   margin-top: 5vw;
-  width: 10vw;
+  width: 12vw;
 }
 
 /* ======================================================
@@ -40,6 +37,7 @@ h1 {
    ====================================================== */
 
 /* Central game column */
+
 .game-block {
    width: 50vw;
    height: 105vh;
@@ -51,8 +49,7 @@ h1 {
 
 /* Top display */
 
-.game-block__header,
-.draw-display {
+.game-block__header {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,10 +59,19 @@ h1 {
 
 .game-block__header--win {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .game-block__image {
+  position: relative;
+  width: 12vw;
   margin: 0px;
+}
+
+.game-block__image--win {
+  position: relative;
+  width: 14vw;
 }
 
 /* Game Board */
