@@ -63,8 +63,7 @@ h1 {
   align-items: center;
 }
 
-.game-block__image,
-.game-block__image--win {
+.game-block__image {
   position: relative;
   width: 10vw;
   margin: 0px;
