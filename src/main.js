@@ -44,8 +44,8 @@ function toggleToken(image) {
   } else {
     image.classList.remove('starfish');
   }
-  image.attributes.src.nodeValue = `./assets/${game.turn.gamePieceName}.svg`
-  image.attributes.alt.nodeValue = `${game.turn.gamePieceName}'s token`;
+  image.attributes.src.nodeValue = `./assets/${currentPiece}.svg`
+  image.attributes.alt.nodeValue = `${currentPiece}'s token`;
 }
 
 function playToken(event) {
@@ -76,7 +76,7 @@ function establishWinner() {
 function displayEndGame() {
   turnDisplay.classList.add('hidden');
   endGameDisplay.classList.remove('hidden');
-  if (game.drawCount === 9) {
+  if (game.drawCount === 9 && game.isWon === false) {
     drawDisplay.classList.remove('hidden');
   } else {
     toggleToken(winnerImage);
