@@ -46,6 +46,8 @@ function toggleToken(image) {
     image.classList.remove('starfish');
   }
   image.attributes.src.nodeValue = currentSource;
+  image.attributes.alt.nodeValue = `${game.turn.token}'s token`
+  console.log(image.attributes)
 }
 
 function playToken(event) {
