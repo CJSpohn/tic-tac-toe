@@ -32,22 +32,20 @@ function checkGameResults() {
     establishWinner();
     return resetGameBoard();
   } else if (game.checkDraw()) {
-    displayEndGame(drawDisplay);
+    displayEndGame();
     return resetGameBoard();
   }
 }
 
 function toggleToken(image) {
   var currentPiece = game.turn.token;
-  var currentSource = game.turn.playerImage
   if (currentPiece === `starfish`) {
     image.classList.add('starfish');
   } else {
     image.classList.remove('starfish');
   }
-  image.attributes.src.nodeValue = currentSource;
-  image.attributes.alt.nodeValue = `${game.turn.token}'s token`
-  console.log(image.attributes)
+  image.attributes.src.nodeValue = game.turn.playerImage;
+  image.attributes.alt.nodeValue = `${game.turn.token}'s token`;
 }
 
 function playToken(event) {
@@ -69,17 +67,19 @@ function disableSpace(event) {
 
 function establishWinner() {
   game.plays++;
-  displayEndGame(winnerDisplay);
+  displayEndGame();
   game.giveWinToPlayer();
   updateWinDisplay();
 }
 
-function displayEndGame(gameResultDisplay) {
+function displayEndGame() {
   turnDisplay.classList.add('hidden');
   endGameDisplay.classList.remove('hidden');
-  gameResultDisplay.classList.remove('hidden')
-  if (gameResultDisplay === winnerDisplay) {
-    toggleToken(winnerImage)
+  if (game.drawCount === 9) {
+    drawDisplay.classList.remove('hidden');
+  } else {
+    toggleToken(winnerImage);
+    winnerDisplay.classList.remove('hidden');
   }
 }
 
