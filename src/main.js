@@ -4,14 +4,14 @@ var player1Wins = document.querySelector('.js-player1-wins');
 var player2Wins = document.querySelector('.js-player2-wins');
 
 window.onload = loadWins();
-var clearWinsBtn = document.querySelector('.js-clear-wins')
+var clearWinsBtn = document.querySelector('.js-clear-wins');
 var gameBoard = document.querySelector('.js-board');
 var turnImage = document.querySelector('.js-turn-image');
-var winnerImage = document.querySelector('.js-winner-image')
+var winnerImage = document.querySelector('.js-winner-image');
 var winnerDisplay = document.querySelector('.js-winner');
 var turnDisplay = document.querySelector('.js-turn-display');
-var endGameDisplay = document.querySelector('.js-end-game')
-var drawDisplay = document.querySelector('.js-draw')
+var endGameDisplay = document.querySelector('.js-end-game');
+var drawDisplay = document.querySelector('.js-draw');
 var allSquares = document.querySelectorAll('.js-space');
 
 gameBoard.addEventListener('click', function(event) {
@@ -46,7 +46,7 @@ function toggleToken(image) {
   } else {
     image.classList.remove('starfish');
   }
-  image.attributes.src.nodeValue = `./assets/${currentPiece}.svg`
+  image.attributes.src.nodeValue = `./assets/${currentPiece}.svg`;
   image.attributes.alt.nodeValue = `${currentPiece}'s token`;
 }
 

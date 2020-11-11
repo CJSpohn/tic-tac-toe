@@ -40,12 +40,12 @@ h1 {
 /* Central game column */
 
 .game {
-   width: 50vw;
-   height: 105vh;
-   padding: 0;
    margin-top: -3vh;
-   text-align: center;
+   padding: 0;
+   height: 105vh;
+   width: 50vw;
    background: white;
+   text-align: center;
 }
 
 /* Top display */
@@ -79,10 +79,10 @@ h1 {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   grid-gap: 8px;
-  margin: 6vh auto;
   width: 90%;
   height: 60vh;
   min-height: 400px;
+  margin: 6vh auto;
   background: linear-gradient(#233656, #70B9AC, #E87A4C, #B99496);
 }
 
@@ -103,11 +103,11 @@ h1 {
 
 .game__board--square-image {
   position: relative;
-  margin: 0;
   width: 65%;
+  margin: 0;
 }
 
-.game__clear-btn {
+.game__btn {
   width: 35%;
   height: 3%;
   font-family: 'Chelsea Market', cursive;
@@ -117,7 +117,7 @@ h1 {
   background: #0477C2;
 }
 
-.game__clear-btn:active {
+.game__btn:active {
   margin: 1px 0 0 1px;
   box-shadow: inset 2px 2px 5px #020024;
 }
