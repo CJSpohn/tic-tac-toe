@@ -26,6 +26,8 @@ computerBtn.addEventListener('click', toggleComputer);
 
 
 //Event Handlers and Helpers
+
+//Computer Stuff
 function toggleComputer() {
   toggleComputerBtnText();
   if (game.players[1].id === 'player2') {
@@ -45,6 +47,16 @@ function toggleComputerBtnText() {
   }
 }
 
+function updateBoardDom(squareNumber, starfishImage) {
+  allSquares.forEach(square => {
+    if (parseInt(square.dataset["id"]) === squareNumber ) {
+      square.innerHTML += starfishImage
+    }
+  })
+}
+
+
+//Player Stuff
 function takeTurn(event) {
   if (event.target.classList.contains('js-space') && game.playable) {
     playToken(event);

@@ -1,9 +1,9 @@
 class Game {
   constructor(player1, player2, plays) {
     this.players = [player1, player2];
-    this.board = [[1],[2],[3],
-                  [4],[5],[6],
-                  [7],[8],[9]];
+    this.board = [[0],[1],[2],
+                  [3],[4],[5],
+                  [6],[7],[8]];
     this.plays = plays || 0;
     this.playable = true;
     if (this.plays % 2 === 0) {
@@ -18,7 +18,7 @@ class Game {
   changeTurn() {
     if (this.turn === this.players[0]) {
       this.turn = this.players[1];
-      if (this.players[1].id === 'computer') {
+      if (this.players[1].id === 'computer' && game.playable) {
         this.takeCpuTurn();
       }
     } else {
@@ -85,9 +85,13 @@ class Game {
   }
 
   takeCpuTurn() {
+    let starfishImage = `<img class="game__board--square-image starfish"
+      src="./assets/starfish.svg" alt="starfish's piece">`;
     let availSpots = this.board.filter(board => typeof board[0] === 'number');
+    console.log(availSpots)
     let cpuMove = availSpots[Math.floor(Math.random() * availSpots.length)];
-    board[indexOf(cpuMove)] === ['starfish'];
+    this.board[this.board.findIndex(square => square[0] === cpuMove[0])] = [starfishImage];
+    updateBoardDom(cpuMove[0], starfishImage);
     this.changeTurn()
   }
 
