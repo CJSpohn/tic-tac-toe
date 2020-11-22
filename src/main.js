@@ -13,12 +13,37 @@ var turnDisplay = document.querySelector('.js-turn-display');
 var endGameDisplay = document.querySelector('.js-end-game');
 var drawDisplay = document.querySelector('.js-draw');
 var allSquares = document.querySelectorAll('.js-space');
+var computerBtn = document.querySelector('.js-computer');
 
+//Event Listeners
 gameBoard.addEventListener('click', function(event) {
   takeTurn(event);
 })
 
 clearWinsBtn.addEventListener('click', clearWins);
+
+computerBtn.addEventListener('click', toggleComputer);
+
+
+//Event Handlers and Helpers
+function toggleComputer() {
+  toggleComputerBtnText();
+  if (game.players[1].id === 'player2') {
+    game = new Game(new Player(`player1`, `sponge`), new Player(`computer`, `starfish`));
+  } else {
+    game = new Game(new Player(`player1`, `sponge`), new Player(`player2`, `starfish`));
+  }
+  loadWins();
+  resetGameBoard();
+}
+
+function toggleComputerBtnText() {
+  if (computerBtn.innerText === "Play against computer") {
+    computerBtn.innerText = "Play against human";
+  } else {
+    computerBtn.innerText = "Play against computer";
+  }
+}
 
 function takeTurn(event) {
   if (event.target.classList.contains('js-space') && game.playable) {

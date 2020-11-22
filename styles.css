@@ -97,7 +97,8 @@ h1 {
 }
 
 .game__board--square:focus,
-.game__clear-btn {
+.game__clear-btn,
+.game__btn--computer {
   outline: none;
 }
 
@@ -107,7 +108,8 @@ h1 {
   margin: 0;
 }
 
-.game__btn {
+.game__btn,
+.game__btn--computer {
   width: 35%;
   height: 3%;
   font-family: 'Chelsea Market', cursive;
@@ -117,7 +119,13 @@ h1 {
   background: #0477C2;
 }
 
-.game__btn:active {
+.game__btn--computer {
+  width: auto;
+  background: #B99496;
+}
+
+.game__btn:active,
+.game__btn--computer:active {
   margin: 1px 0 0 1px;
   box-shadow: inset 2px 2px 5px #020024;
 }

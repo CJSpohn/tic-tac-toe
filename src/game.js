@@ -18,6 +18,9 @@ class Game {
   changeTurn() {
     if (this.turn === this.players[0]) {
       this.turn = this.players[1];
+      if (this.players[1].id === 'computer') {
+        this.takeCpuTurn();
+      }
     } else {
       this.turn = this.players[0];
     }
@@ -79,6 +82,13 @@ class Game {
     var player2 = new Player(game.players[1].id, game.players[1].gamePieceName, game.players[1].wins);
     game = new Game(player1, player2, game.plays);
     clearBoard();
+  }
+
+  takeCpuTurn() {
+    let availSpots = this.board.filter(board => typeof board[0] === 'number');
+    let cpuMove = availSpots[Math.floor(Math.random() * availSpots.length)];
+    board[indexOf(cpuMove)] === ['starfish'];
+    this.changeTurn()
   }
 
 }
