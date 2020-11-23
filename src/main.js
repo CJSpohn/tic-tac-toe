@@ -152,6 +152,9 @@ function resetGameBoard() {
     turnDisplay.classList.remove('hidden');
     game.resetGameData();
     toggleToken(turnImage);
+    if (game.players[1].id === `computer` && game.turn === game.players[1]) {
+      game.takeCpuTurn();
+    }
 }
 
 function resetGameBoardDelay() {
