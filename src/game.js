@@ -92,7 +92,7 @@ class Game {
     let cpuMove = availSpots[Math.floor(Math.random() * availSpots.length)];
     this.board[this.board.findIndex(square => square[0] === cpuMove[0])] = [starfishImage];
     updateBoardDom(cpuMove[0], starfishImage);
-    this.changeTurn()
+    evaluateTurn();
   }
 
 }

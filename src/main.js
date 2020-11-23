@@ -1,3 +1,10 @@
+/*
+
+TODO:
+2) fix game win problems
+3) fix computer not taking a turn when it's cpu's turn to go first
+*/
+
 var game = new Game(new Player(`player1`, `sponge`), new Player(`player2`, `starfish`));
 
 var player1Wins = document.querySelector('.js-player1-wins');
@@ -60,19 +67,24 @@ function updateBoardDom(squareNumber, starfishImage) {
 function takeTurn(event) {
   if (event.target.classList.contains('js-space') && game.playable) {
     playToken(event);
-    checkGameResults();
-    game.changeTurn();
-    toggleToken(turnImage);
+    evaluateTurn();
   }
 }
+
+function evaluateTurn() {
+  checkGameResults();
+  game.changeTurn();
+  toggleToken(turnImage);
+}
+
 
 function checkGameResults() {
   if (game.checkGameWinner()) {
     establishWinner();
-    return resetGameBoard();
+    resetGameBoardDelay()
   } else if (game.checkDraw()) {
     displayEndGame();
-    return resetGameBoard();
+    resetGameBoardDelay();
   }
 }
 
@@ -135,14 +147,18 @@ function updateWinDisplay() {
 }
 
 function resetGameBoard() {
-  setTimeout(function() {
     endGameDisplay.classList.add('hidden');
     drawDisplay.classList.add('hidden');
     winnerDisplay.classList.add('hidden');
     turnDisplay.classList.remove('hidden');
     game.resetGameData();
     toggleToken(turnImage);
-  }, 2000);
+}
+
+function resetGameBoardDelay() {
+  setTimeout(function () {
+    resetGameBoard()
+  }, 2000)
 }
 
 function clearBoard() {
