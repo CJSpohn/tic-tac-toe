@@ -1,7 +1,6 @@
 /*
 
 TODO:
-2) fix game win problems
 3) fix computer not taking a turn when it's cpu's turn to go first
 */
 

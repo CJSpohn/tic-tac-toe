@@ -88,9 +88,9 @@ class Game {
     let starfishImage = `<img class="game__board--square-image starfish"
       src="./assets/starfish.svg" alt="starfish's piece">`;
     let availSpots = this.board.filter(board => typeof board[0] === 'number');
-    console.log(availSpots)
     let cpuMove = availSpots[Math.floor(Math.random() * availSpots.length)];
     this.board[this.board.findIndex(square => square[0] === cpuMove[0])] = [starfishImage];
+    this.drawCount++;
     updateBoardDom(cpuMove[0], starfishImage);
     evaluateTurn();
   }
