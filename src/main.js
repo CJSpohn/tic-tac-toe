@@ -5,6 +5,10 @@ TODO:
 */
 
 var game = new Game(new Player(`player1`, `sponge`), new Player(`player2`, `starfish`));
+let huPlayer = `<img class="game__board--square-image sponge"
+  src="./assets/sponge.svg" alt="sponge's piece">`
+let aiPlayer = `<img class="game__board--square-image starfish"
+  src="./assets/starfish.svg" alt="starfish's piece">`
 
 var player1Wins = document.querySelector('.js-player1-wins');
 var player2Wins = document.querySelector('.js-player2-wins');
@@ -105,10 +109,12 @@ function playToken(event) {
 
 function insertToken(event) {
   var squareNumber = parseInt(event.target.dataset.id);
+  console.log(squareNumber)
   var playerImage = `<img class="game__board--square-image ${game.turn.gamePieceName}"
     src="./assets/${game.turn.gamePieceName}.svg" alt="${game.turn.id}'s piece">`;
   event.target.insertAdjacentHTML('afterbegin', playerImage);
-  game.board[squareNumber].splice(0, 1, playerImage);
+  console.log(game.board)
+  game.board[squareNumber] = playerImage;
   disableSpace(event);
 }
 
