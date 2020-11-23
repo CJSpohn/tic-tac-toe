@@ -109,11 +109,9 @@ function playToken(event) {
 
 function insertToken(event) {
   var squareNumber = parseInt(event.target.dataset.id);
-  console.log(squareNumber)
   var playerImage = `<img class="game__board--square-image ${game.turn.gamePieceName}"
     src="./assets/${game.turn.gamePieceName}.svg" alt="${game.turn.id}'s piece">`;
   event.target.insertAdjacentHTML('afterbegin', playerImage);
-  console.log(game.board)
   game.board[squareNumber] = playerImage;
   disableSpace(event);
 }

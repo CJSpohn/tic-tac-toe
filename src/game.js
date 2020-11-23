@@ -87,13 +87,10 @@ class Game {
   takeCpuTurn() {
     let starfishImage = `<img class="game__board--square-image starfish"
       src="./assets/starfish.svg" alt="starfish's piece">`;
-    // let cpuChoice = this.pickCpuMove();
-    //MINIMAX
     let cpuChoice = this.minimax(game.board, aiPlayer);
-    //MINIMAX
-    this.board[this.board.findIndex(square => square === cpuChoice)] = starfishImage;
+    this.board[cpuChoice.index] = starfishImage;
     this.drawCount++;
-    updateBoardDom(cpuChoice, starfishImage);
+    updateBoardDom(cpuChoice.index, starfishImage);
     evaluateTurn();
   }
 
@@ -136,7 +133,6 @@ class Game {
 
   minimax(newBoard, player) {
     let availSpots = this.board.filter(space => typeof space === 'number');
-    console.log(availSpots)
 
     if (this.checkWin(newBoard, huPlayer)) {
       return {score: -10};
