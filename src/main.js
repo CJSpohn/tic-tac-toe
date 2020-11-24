@@ -1,4 +1,12 @@
+/*
+
+TODO:
+3) fix computer not taking a turn when it's cpu's turn to go first
+*/
+
 var game = new Game(new Player(`player1`, `sponge`), new Player(`player2`, `starfish`));
+let huPlayer = "<img class=\"game__board--square-image sponge\"\n    src=\"./assets/sponge.svg\" alt=\"player1's piece\">"
+let aiPlayer = "<img class=\"game__board--square-image starfish\"\n    src=\"./assets/starfish.svg\" alt=\"player2's piece\">"
 
 var player1Wins = document.querySelector('.js-player1-wins');
 var player2Wins = document.querySelector('.js-player2-wins');
@@ -13,29 +21,71 @@ var turnDisplay = document.querySelector('.js-turn-display');
 var endGameDisplay = document.querySelector('.js-end-game');
 var drawDisplay = document.querySelector('.js-draw');
 var allSquares = document.querySelectorAll('.js-space');
+var computerBtn = document.querySelector('.js-computer');
 
+//Event Listeners
 gameBoard.addEventListener('click', function(event) {
   takeTurn(event);
 })
 
 clearWinsBtn.addEventListener('click', clearWins);
 
+computerBtn.addEventListener('click', toggleComputer);
+
+
+//Event Handlers and Helpers
+
+//Computer Stuff
+function toggleComputer() {
+  toggleComputerBtnText();
+  if (game.players[1].id === 'player2') {
+    game = new Game(new Player(`player1`, `sponge`), new Player(`computer`, `starfish`));
+  } else {
+    game = new Game(new Player(`player1`, `sponge`), new Player(`player2`, `starfish`));
+  }
+  loadWins();
+  resetGameBoard();
+}
+
+function toggleComputerBtnText() {
+  if (computerBtn.innerText === "Play against computer") {
+    computerBtn.innerText = "Play against human";
+  } else {
+    computerBtn.innerText = "Play against computer";
+  }
+}
+
+function updateBoardDom(squareNumber, starfishImage) {
+  allSquares.forEach(square => {
+    if (parseInt(square.dataset["id"]) === squareNumber ) {
+      square.innerHTML += starfishImage
+    }
+  })
+}
+
+
+//Player Stuff
 function takeTurn(event) {
   if (event.target.classList.contains('js-space') && game.playable) {
     playToken(event);
-    checkGameResults();
-    game.changeTurn();
-    toggleToken(turnImage);
+    evaluateTurn();
   }
 }
+
+function evaluateTurn() {
+  checkGameResults();
+  game.changeTurn();
+  toggleToken(turnImage);
+}
+
 
 function checkGameResults() {
   if (game.checkGameWinner()) {
     establishWinner();
-    return resetGameBoard();
+    resetGameBoardDelay()
   } else if (game.checkDraw()) {
     displayEndGame();
-    return resetGameBoard();
+    resetGameBoardDelay();
   }
 }
 
@@ -60,7 +110,7 @@ function insertToken(event) {
   var playerImage = `<img class="game__board--square-image ${game.turn.gamePieceName}"
     src="./assets/${game.turn.gamePieceName}.svg" alt="${game.turn.id}'s piece">`;
   event.target.insertAdjacentHTML('afterbegin', playerImage);
-  game.board[squareNumber].splice(0, 1, playerImage);
+  game.board[squareNumber] = playerImage;
   disableSpace(event);
 }
 
@@ -98,14 +148,21 @@ function updateWinDisplay() {
 }
 
 function resetGameBoard() {
-  setTimeout(function() {
-    endGameDisplay.classList.add('hidden');
-    drawDisplay.classList.add('hidden');
-    winnerDisplay.classList.add('hidden');
-    turnDisplay.classList.remove('hidden');
-    game.resetGameData();
-    toggleToken(turnImage);
-  }, 2000);
+  endGameDisplay.classList.add('hidden');
+  drawDisplay.classList.add('hidden');
+  winnerDisplay.classList.add('hidden');
+  turnDisplay.classList.remove('hidden');
+  game.resetGameData();
+  toggleToken(turnImage);
+  if (game.players[1].id === `computer` && game.turn === game.players[1]) {
+    game.takeCpuTurn();
+  }
+}
+
+function resetGameBoardDelay() {
+  setTimeout(function () {
+    resetGameBoard()
+  }, 2000)
 }
 
 function clearBoard() {
