@@ -84,20 +84,21 @@ class Game {
     clearBoard();
   }
 
+  ///MINIMAX ADDITION
+
   takeCpuTurn() {
     let starfishImage = `<img class="game__board--square-image starfish"
       src="./assets/starfish.svg" alt="starfish's piece">`;
-    let cpuChoice = this.minimax(game.board, aiPlayer);
-    this.board[cpuChoice.index] = starfishImage;
+    let cpuMove = this.pickCpuMove();
     this.drawCount++;
-    updateBoardDom(cpuChoice.index, starfishImage);
+    this.board[cpuMove] = starfishImage;
+    updateBoardDom(cpuMove, starfishImage);
     evaluateTurn();
   }
 
   pickCpuMove() {
-    let availSpots = this.board.filter(space => typeof space === 'number');
-    let cpuMove = availSpots[Math.floor(Math.random() * availSpots.length)];
-    return cpuMove
+    let cpuMove = this.minimax(game.board, aiPlayer).index;
+    return cpuMove;
   }
 
   checkWin(board, player) {
@@ -107,11 +108,10 @@ class Game {
   }
 
   checkCpuRows(board, player) {
-    for (var i = 0; i < 9; i++) {
+    for (var i = 0; i < 9; i=i+3) {
       if (board[i] === board[i+1] && board[i] === board[i+2] && board[i] === player) {
         return true;
       }
-      i += 2;
     }
   }
 
@@ -135,33 +135,32 @@ class Game {
     let availSpots = this.board.filter(space => typeof space === 'number');
 
     if (this.checkWin(newBoard, huPlayer)) {
-      return {score: -10};
+      return { score: -10 };
     } else if (this.checkWin(newBoard, aiPlayer)) {
-      return {score: 10};
+      return { score: 10 };
     } else if (availSpots.length === 0) {
-      return {score: 0};
+      return { score: 0 };
     }
-    let moves = [];
+
+    var moves = [];
+
     for (let i = 0; i < availSpots.length; i++) {
-      let move = {};
+      var move = {};
       move.index = newBoard[availSpots[i]];
-      newBoard[availSpots[i]] = player
+      newBoard[availSpots[i]] = player;
 
       if (player === aiPlayer) {
-        let result = this.minimax(newBoard, huPlayer);
-        move.score = result.score;
+        move.score = this.minimax(newBoard, huPlayer).score;
       } else {
-        let result = this.minimax(newBoard, aiPlayer);
-        move.score = result.score
+        move.score = this.minimax(newBoard, aiPlayer).score;
       }
       newBoard[availSpots[i]] = move.index;
-
-      moves.push(move)
+      moves.push(move);
     }
-
-    let bestMove;
+    
+    let bestMove, bestScore;
   	if (player === aiPlayer) {
-  		var bestScore = -10000;
+  		bestScore = -1000;
   		for (let i = 0; i < moves.length; i++) {
   			if (moves[i].score > bestScore) {
   				bestScore = moves[i].score;
@@ -169,7 +168,7 @@ class Game {
   			}
   		}
   	} else {
-  		let bestScore = 10000;
+  		bestScore = 1000;
   		for (var i = 0; i < moves.length; i++) {
   			if (moves[i].score < bestScore) {
   				bestScore = moves[i].score;
