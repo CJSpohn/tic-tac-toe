@@ -84,15 +84,21 @@ class Game {
     clearBoard();
   }
 
-  ///MINIMAX ADDITION
-
+  ///MINIMAX
   takeCpuTurn() {
     this.drawCount++;
-    let cpuMove = this.minimax(game.board, aiPlayer).index;
+    let cpuMove;
+    if (radioBtnEasy.checked) {
+      cpuMove = this.randomSelect();
+    } else if (radioBtnHard.checked) {
+      cpuMove = this.minimax(game.board, aiPlayer).index;
+    }
+    console.log(cpuMove)
     this.board[cpuMove] = aiPlayer;
     updateBoardDom(cpuMove, aiPlayer);
     evaluateTurn();
   }
+
 
   checkWin(board, player) {
     if (this.checkCpuRows(board, player) || this.checkCpuCols(board, player) || this.checkCpuDiags(board, player)) {
@@ -125,6 +131,11 @@ class Game {
     } else if (board[2] === board[4] && board[2] === board[6] && board[2] === player) {
       return true;
     }
+  }
+
+  randomSelect() {
+    let availSpots = this.board.filter((elm, i) => i === elm);
+    return availSpots[Math.floor(Math.random() * availSpots.length)]
   }
 
   minimax(newBoard, player) {

@@ -1,9 +1,3 @@
-/*
-
-TODO:
-3) fix computer not taking a turn when it's cpu's turn to go first
-*/
-
 var game = new Game(new Player(`player1`, `sponge`), new Player(`player2`, `starfish`));
 let huPlayer = "<img class=\"game__board--square-image sponge\"\n    src=\"./assets/sponge.svg\" alt=\"player1's piece\">"
 let aiPlayer = "<img class=\"game__board--square-image starfish\"\n    src=\"./assets/starfish.svg\" alt=\"player2's piece\">"
@@ -24,6 +18,9 @@ var endGameDisplay = document.querySelector('.js-end-game');
 var drawDisplay = document.querySelector('.js-draw');
 var allSquares = document.querySelectorAll('.js-space');
 var computerBtn = document.querySelector('.js-computer');
+var radioBtnsDisplay = document.querySelector('.js-radio-display');
+var radioBtnEasy = document.querySelector('#easy');
+var radioBtnHard = document.querySelector('#hard');
 
 //Event Listeners
 gameBoard.addEventListener('click', function(event) {
@@ -51,8 +48,10 @@ function toggleComputer() {
 
 function toggleComputerBtnText() {
   if (computerBtn.innerText === "Play against computer") {
+    radioBtnsDisplay.classList.remove("hidden")
     computerBtn.innerText = "Play against human";
   } else {
+    radioBtnsDisplay.classList.add("hidden")
     computerBtn.innerText = "Play against computer";
   }
 }
