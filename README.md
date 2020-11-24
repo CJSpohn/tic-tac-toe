@@ -6,6 +6,8 @@ This is my version of the age-old game Tic-Tac-Toe. This is my final project for
 
 The spec for the project can be found [here](https://frontend.turing.io/projects/module-1/tic-tac-toe-solo.html).
 
+The live site can be found [here](https://cjspohn.github.io/tic-tac-toe/)
+
 ## Prerequisites
 
 There are no prerequisite programs or tools needed. The app runs in a browser and does not require downloads. User wins are stored in local storage within the browser and persist on page refresh.
