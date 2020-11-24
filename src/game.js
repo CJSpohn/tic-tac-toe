@@ -87,24 +87,18 @@ class Game {
   ///MINIMAX ADDITION
 
   takeCpuTurn() {
-    let starfishImage = `<img class="game__board--square-image starfish"
-      src="./assets/starfish.svg" alt="starfish's piece">`;
-    let cpuMove = this.pickCpuMove();
     this.drawCount++;
-    this.board[cpuMove] = starfishImage;
-    updateBoardDom(cpuMove, starfishImage);
-    evaluateTurn();
-  }
-
-  pickCpuMove() {
     let cpuMove = this.minimax(game.board, aiPlayer).index;
-    return cpuMove;
+    this.board[cpuMove] = aiPlayer;
+    updateBoardDom(cpuMove, aiPlayer);
+    evaluateTurn();
   }
 
   checkWin(board, player) {
     if (this.checkCpuRows(board, player) || this.checkCpuCols(board, player) || this.checkCpuDiags(board, player)) {
       return true;
     }
+    return false
   }
 
   checkCpuRows(board, player) {
@@ -113,6 +107,7 @@ class Game {
         return true;
       }
     }
+    return false
   }
 
   checkCpuCols(board, player) {
@@ -121,6 +116,7 @@ class Game {
         return true;
       }
     }
+    return false
   }
 
   checkCpuDiags(board, player) {
@@ -132,7 +128,7 @@ class Game {
   }
 
   minimax(newBoard, player) {
-    let availSpots = this.board.filter(space => typeof space === 'number');
+    let availSpots = newBoard.filter((elm, i) => i === elm);
 
     if (this.checkWin(newBoard, huPlayer)) {
       return { score: -10 };
@@ -155,9 +151,13 @@ class Game {
         move.score = this.minimax(newBoard, aiPlayer).score;
       }
       newBoard[availSpots[i]] = move.index;
-      moves.push(move);
+      if ((player === aiPlayer && move.score === 10) || (player === huPlayer && move.score === -10)) {
+        return move;
+      } else {
+        moves.push(move);
+      }
     }
-    
+
     let bestMove, bestScore;
   	if (player === aiPlayer) {
   		bestScore = -1000;
@@ -169,7 +169,7 @@ class Game {
   		}
   	} else {
   		bestScore = 1000;
-  		for (var i = 0; i < moves.length; i++) {
+  		for (let i = 0; i < moves.length; i++) {
   			if (moves[i].score < bestScore) {
   				bestScore = moves[i].score;
   				bestMove = i;

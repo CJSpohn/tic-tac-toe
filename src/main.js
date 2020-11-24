@@ -5,10 +5,10 @@ TODO:
 */
 
 var game = new Game(new Player(`player1`, `sponge`), new Player(`player2`, `starfish`));
-let huPlayer = `<img class="game__board--square-image sponge"
-  src="./assets/sponge.svg" alt="sponge's piece">`
-let aiPlayer = `<img class="game__board--square-image starfish"
-  src="./assets/starfish.svg" alt="starfish's piece">`
+let huPlayer = "<img class=\"game__board--square-image sponge\"\n    src=\"./assets/sponge.svg\" alt=\"player1's piece\">"
+let aiPlayer = "<img class=\"game__board--square-image starfish\"\n    src=\"./assets/starfish.svg\" alt=\"player2's piece\">"
+
+
 
 var player1Wins = document.querySelector('.js-player1-wins');
 var player2Wins = document.querySelector('.js-player2-wins');
