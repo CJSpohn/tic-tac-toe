@@ -42,6 +42,14 @@
     <aside class="player">
       <img class="player__image starfish" src="assets/starfish.svg" alt="A pink starfish">
       <h1 class="player__wins js-player2-wins"></h1>
+      <button class="game__btn--computer js-computer">Play against computer</button>
+      <div class="game__btn--radio js-radio-display hidden">
+        <p>Computer Difficulty:</p>
+        <input class="game__btn--radio-btn" type="radio" id="easy" name="difficulty" value="easy" checked>
+        <label for="easy">Easy</label>
+        <input class="game__btn--radio-btn" type="radio" id="hard" name="difficulty" value="hard">
+        <label for="easy">Hard</label>
+      </div>
     </aside>
     <script src="src/player.js"></script>
     <script src="src/game.js"></script>

@@ -1,9 +1,9 @@
 class Game {
   constructor(player1, player2, plays) {
     this.players = [player1, player2];
-    this.board = [[1],[2],[3],
-                  [4],[5],[6],
-                  [7],[8],[9]];
+    this.board = [0,1,2,
+                  3,4,5,
+                  6,7,8];
     this.plays = plays || 0;
     this.playable = true;
     if (this.plays % 2 === 0) {
@@ -18,6 +18,9 @@ class Game {
   changeTurn() {
     if (this.turn === this.players[0]) {
       this.turn = this.players[1];
+      if (this.players[1].id === 'computer' && game.playable) {
+        this.takeCpuTurn();
+      }
     } else {
       this.turn = this.players[0];
     }
@@ -33,7 +36,7 @@ class Game {
 
   checkRows() {
     for (var i = 0; i < 9; i++) {
-      if (this.board[i][0] === this.board[i+1][0] && this.board[i][0] === this.board[i+2][0]) {
+      if (this.board[i] === this.board[i+1] && this.board[i] === this.board[i+2]) {
         animateWinner([i, i+1, i+2]);
         return true;
       }
@@ -43,7 +46,7 @@ class Game {
 
   checkCols() {
     for (var i = 0; i < 3; i++) {
-      if (this.board[i][0] === this.board[i+3][0] && this.board[i][0] === this.board[i+6][0]) {
+      if (this.board[i] === this.board[i+3] && this.board[i] === this.board[i+6]) {
         animateWinner([i, i+3, i+6]);
         return true;
       }
@@ -51,10 +54,10 @@ class Game {
   }
 
   checkDiags() {
-    if (this.board[0][0] === this.board[4][0] && this.board[0][0] === this.board[8][0]) {
+    if (this.board[0] === this.board[4] && this.board[0] === this.board[8]) {
       animateWinner([0, 4, 8]);
       return true;
-    } else if (this.board[2][0] === this.board[4][0] && this.board[2][0] === this.board[6][0]) {
+    } else if (this.board[2] === this.board[4] && this.board[2] === this.board[6]) {
       animateWinner([2, 4, 6]);
       return true;
     }
@@ -79,6 +82,113 @@ class Game {
     var player2 = new Player(game.players[1].id, game.players[1].gamePieceName, game.players[1].wins);
     game = new Game(player1, player2, game.plays);
     clearBoard();
+  }
+
+  ///MINIMAX
+  takeCpuTurn() {
+    this.drawCount++;
+    let cpuMove;
+    if (radioBtnEasy.checked) {
+      cpuMove = this.randomSelect();
+    } else if (radioBtnHard.checked) {
+      cpuMove = this.minimax(game.board, aiPlayer).index;
+    }
+    console.log(cpuMove)
+    this.board[cpuMove] = aiPlayer;
+    updateBoardDom(cpuMove, aiPlayer);
+    evaluateTurn();
+  }
+
+
+  checkWin(board, player) {
+    if (this.checkCpuRows(board, player) || this.checkCpuCols(board, player) || this.checkCpuDiags(board, player)) {
+      return true;
+    }
+    return false
+  }
+
+  checkCpuRows(board, player) {
+    for (var i = 0; i < 9; i=i+3) {
+      if (board[i] === board[i+1] && board[i] === board[i+2] && board[i] === player) {
+        return true;
+      }
+    }
+    return false
+  }
+
+  checkCpuCols(board, player) {
+    for (var i = 0; i < 3; i++) {
+      if (board[i] === board[i+3] && board[i] === board[i+6] && board[i] === player) {
+        return true;
+      }
+    }
+    return false
+  }
+
+  checkCpuDiags(board, player) {
+    if (board[0] === board[4] && board[0] === board[8] && board[0] === player) {
+      return true;
+    } else if (board[2] === board[4] && board[2] === board[6] && board[2] === player) {
+      return true;
+    }
+  }
+
+  randomSelect() {
+    let availSpots = this.board.filter((elm, i) => i === elm);
+    return availSpots[Math.floor(Math.random() * availSpots.length)]
+  }
+
+  minimax(newBoard, player) {
+    let availSpots = newBoard.filter((elm, i) => i === elm);
+
+    if (this.checkWin(newBoard, huPlayer)) {
+      return { score: -10 };
+    } else if (this.checkWin(newBoard, aiPlayer)) {
+      return { score: 10 };
+    } else if (availSpots.length === 0) {
+      return { score: 0 };
+    }
+
+    var moves = [];
+
+    for (let i = 0; i < availSpots.length; i++) {
+      var move = {};
+      move.index = newBoard[availSpots[i]];
+      newBoard[availSpots[i]] = player;
+
+      if (player === aiPlayer) {
+        move.score = this.minimax(newBoard, huPlayer).score;
+      } else {
+        move.score = this.minimax(newBoard, aiPlayer).score;
+      }
+      newBoard[availSpots[i]] = move.index;
+      if ((player === aiPlayer && move.score === 10) || (player === huPlayer && move.score === -10)) {
+        return move;
+      } else {
+        moves.push(move);
+      }
+    }
+
+    let bestMove, bestScore;
+  	if (player === aiPlayer) {
+  		bestScore = -1000;
+  		for (let i = 0; i < moves.length; i++) {
+  			if (moves[i].score > bestScore) {
+  				bestScore = moves[i].score;
+  				bestMove = i;
+  			}
+  		}
+  	} else {
+  		bestScore = 1000;
+  		for (let i = 0; i < moves.length; i++) {
+  			if (moves[i].score < bestScore) {
+  				bestScore = moves[i].score;
+  				bestMove = i;
+  			}
+  		}
+  	}
+
+  	return moves[bestMove];
   }
 
 }
